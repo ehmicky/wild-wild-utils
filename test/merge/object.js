@@ -87,6 +87,24 @@ testOutput('merge', merge, [
       output: getChild({ own: { one: 1, two: 2 } }),
     },
   ]),
+  {
+    input: [
+      { one: { two: { own: { three: 3 } } } },
+      'one',
+      { two: getChild({ own: { four: 0 } }) },
+      { classes: false, mutate: true, deep: true },
+    ],
+    output: { one: { two: getChild({ own: { four: 0 } }) } },
+  },
+  {
+    input: [
+      { one: { two: { own: { three: 3 } } } },
+      'one',
+      { two: getChild({ own: { four: 0 } }) },
+      { classes: true, mutate: true, deep: true },
+    ],
+    output: { one: { two: { own: { three: 3, four: 0 } } } },
+  },
 ])
 
 testValidation('merge', merge, [[{}, true, { one: 1 }]])
