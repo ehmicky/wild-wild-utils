@@ -9,10 +9,12 @@ const pushValue = function (value, newValues, { mutate }) {
     return [...value, ...newValues]
   }
 
-  newValues.forEach((newValue) => {
+  // eslint-disable-next-line fp/no-loops
+  for (const newValue of newValues) {
     // eslint-disable-next-line fp/no-mutating-methods
     value.push(newValue)
-  })
+  }
+
   return value
 }
 
@@ -28,11 +30,12 @@ const unshiftValue = function (value, newValues, { mutate }) {
     return [...newValues, ...value]
   }
 
-  // eslint-disable-next-line fp/no-mutating-methods
-  ;[...newValues].reverse().forEach((newValue) => {
+  // eslint-disable-next-line fp/no-loops, fp/no-let, fp/no-mutation
+  for (let index = newValues.length - 1; index >= 0; index -= 1) {
     // eslint-disable-next-line fp/no-mutating-methods
-    value.unshift(newValue)
-  })
+    value.unshift(newValues[index])
+  }
+
   return value
 }
 
