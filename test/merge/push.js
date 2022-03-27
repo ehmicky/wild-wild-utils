@@ -7,12 +7,14 @@ import { testValidation } from '../helpers/validate.js'
 
 testMutate('unshift', unshift, [
   { input: [{ one: [1] }, 'one', [2]], output: { one: [2, 1] } },
+  { input: [{ one: [1] }, 'one', [2, 3]], output: { one: [2, 3, 1] } },
   { input: [{ one: 1 }, 'one', [2]], output: { one: [2] } },
 ])
 
 testMutate('push', push, [
   // Main usage
   { input: [{ one: [1] }, 'one', [2]], output: { one: [1, 2] } },
+  { input: [{ one: [1] }, 'one', [2, 3]], output: { one: [1, 2, 3] } },
   { input: [{ one: 1 }, 'one', [2]], output: { one: [2] } },
 
   // `leaves` and `roots` options

@@ -28,7 +28,8 @@ const unshiftValue = function (value, newValues, { mutate }) {
     return [...newValues, ...value]
   }
 
-  newValues.forEach((newValue) => {
+  // eslint-disable-next-line fp/no-mutating-methods
+  ;[...newValues].reverse().forEach((newValue) => {
     // eslint-disable-next-line fp/no-mutating-methods
     value.unshift(newValue)
   })
