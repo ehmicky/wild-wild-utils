@@ -15,6 +15,7 @@ const returnTrue = function () {
 const child = getChild()
 
 testOutput('find', find, [
+  // Main usage
   { input: [{ one: 1, two: 2 }, '*', isTwo], output: 2 },
   { input: [{ one: 1, two: 2 }, '*', returnTrue], output: 1 },
   { input: [{}, 'one', returnTrue], output: undefined },
