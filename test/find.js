@@ -14,6 +14,7 @@ each(
   [
     { input: [{ one: 1, two: 2 }, '*', isTwo], output: 2 },
     { input: [{ one: 1, two: 2 }, '*', returnTrue], output: 1 },
+    { input: [{}, '*', returnTrue], output: undefined },
 
     // `childFirst`, `leaves` and `roots` options
     { input: [{ one: 1 }, '**', returnTrue], output: { one: 1 } },
@@ -27,6 +28,13 @@ each(
     // `sort` option
     { input: [{ two: 2, one: 1 }, '*', returnTrue], output: 2 },
     { input: [{ two: 2, one: 1 }, '*', returnTrue, { sort: true }], output: 1 },
+
+    // `entries` option
+    {
+      input: [{ one: 1 }, '*', returnTrue, { entries: true }],
+      output: { value: 1, path: ['one'], missing: false },
+    },
+    { input: [{}, '*', returnTrue, { entries: true }], output: undefined },
   ],
   ({ title }, { input, output }) => {
     test(`find() output | ${title}`, (t) => {
