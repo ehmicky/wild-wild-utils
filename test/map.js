@@ -20,8 +20,8 @@ const addOneProp = function (object) {
   return { ...object, one: 1 }
 }
 
-const returnEntry = function (entry) {
-  return entry
+const identity = function (value) {
+  return value
 }
 
 const addDefaultOne = function (value = 1) {
@@ -30,6 +30,7 @@ const addDefaultOne = function (value = 1) {
 
 testMutate('map', map, [
   // Main usage
+  { input: [{ one: 1, two: 2 }, '*', identity], output: { one: 1, two: 2 } },
   { input: [{ one: 1, two: 2 }, '*', addOne], output: { one: 2, two: 3 } },
   { input: [{}, 'one', addOne], output: {} },
 
@@ -55,12 +56,12 @@ testMutate('map', map, [
 
   // `entries` option
   {
-    input: [{ one: 1 }, 'one', returnEntry],
+    input: [{ one: 1 }, 'one', identity],
     opts: { entries: true },
     output: { one: { value: 1, path: ['one'], missing: false } },
   },
   {
-    input: [{}, 'one', returnEntry],
+    input: [{}, 'one', identity],
     opts: { entries: true, missing: true },
     output: { one: { value: undefined, path: ['one'], missing: true } },
   },
