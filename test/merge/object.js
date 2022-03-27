@@ -87,24 +87,21 @@ testOutput('merge', merge, [
       output: getChild({ own: { one: 1, two: 2 } }),
     },
   ]),
-  {
+  ...[
+    {
+      classes: false,
+      output: { one: { two: getChild({ own: { four: 0 } }) } },
+    },
+    { classes: true, output: { one: { two: { own: { three: 3, four: 0 } } } } },
+  ].map(({ classes, output }) => ({
     input: [
       { one: { two: { own: { three: 3 } } } },
       'one',
       { two: getChild({ own: { four: 0 } }) },
-      { classes: false, mutate: true, deep: true },
+      { classes, mutate: true, deep: true },
     ],
-    output: { one: { two: getChild({ own: { four: 0 } }) } },
-  },
-  {
-    input: [
-      { one: { two: { own: { three: 3 } } } },
-      'one',
-      { two: getChild({ own: { four: 0 } }) },
-      { classes: true, mutate: true, deep: true },
-    ],
-    output: { one: { two: { own: { three: 3, four: 0 } } } },
-  },
+    output,
+  })),
 ])
 
 testValidation('merge', merge, [
