@@ -76,15 +76,17 @@ testOutput('merge', merge, [
     input: [getChild({ own: { one: 1 } }), 'own', { two: 2 }, { mutate: true }],
     output: { own: { two: 2 } },
   },
-  {
-    input: [
-      getChild({ own: { one: 1 } }),
-      'own',
-      { two: 2 },
-      { classes: true, mutate: true },
-    ],
-    output: getChild({ own: { one: 1, two: 2 } }),
-  },
+  ...[true, false].flatMap((deep) => [
+    {
+      input: [
+        getChild({ own: { one: 1 } }),
+        'own',
+        { two: 2 },
+        { classes: true, mutate: true, deep },
+      ],
+      output: getChild({ own: { one: 1, two: 2 } }),
+    },
+  ]),
 ])
 
 testValidation('merge', merge, [[{}, true, { one: 1 }]])
