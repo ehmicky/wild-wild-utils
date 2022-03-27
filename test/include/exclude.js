@@ -1,28 +1,15 @@
 import { exclude } from 'wild-wild-utils'
 
+import {
+  returnFalse,
+  returnTrue,
+  isOne,
+  isNotOne,
+  isNamedTwo,
+} from '../helpers/functions.js'
 import { getChild } from '../helpers/inherited.js'
 import { testMutate } from '../helpers/mutate.js'
 import { testValidation } from '../helpers/validate.js'
-
-const returnFalse = function () {
-  return false
-}
-
-const returnTrue = function () {
-  return true
-}
-
-const isOne = function (value) {
-  return value === 1
-}
-
-const isNotOne = function (value) {
-  return value !== 1
-}
-
-const isNamedTwo = function ({ path }) {
-  return path[0] === 'two'
-}
 
 testMutate('exclude', exclude, [
   // Main usage

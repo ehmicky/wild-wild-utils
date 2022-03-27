@@ -1,5 +1,6 @@
 import { map } from 'wild-wild-utils'
 
+import { identity } from './helpers/functions.js'
 import { getChild } from './helpers/inherited.js'
 import { testMutate } from './helpers/mutate.js'
 import { testValidation } from './helpers/validate.js'
@@ -18,10 +19,6 @@ const isEmptyObj = function (object) {
 
 const addOneProp = function (object) {
   return { ...object, one: 1 }
-}
-
-const identity = function (value) {
-  return value
 }
 
 const addDefaultOne = function (value = 1) {

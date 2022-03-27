@@ -1,23 +1,16 @@
 import { find } from 'wild-wild-utils'
 
+import { returnTrue, isOne } from './helpers/functions.js'
 import { getChild } from './helpers/inherited.js'
 import { testOutput } from './helpers/output.js'
 import { testValidation } from './helpers/validate.js'
-
-const isTwo = function (value) {
-  return value === 2
-}
-
-const returnTrue = function () {
-  return true
-}
 
 const child = getChild()
 
 testOutput('find', find, [
   // Main usage
-  { input: [{ one: 1, two: 2 }, '*', isTwo], output: 2 },
-  { input: [{ one: 1, two: 2 }, '*', returnTrue], output: 1 },
+  { input: [{ two: 2, one: 1 }, '*', isOne], output: 1 },
+  { input: [{ two: 2, one: 1 }, '*', returnTrue], output: 2 },
   { input: [{}, 'one', returnTrue], output: undefined },
 
   // `childFirst`, `leaves` and `roots` options

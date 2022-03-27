@@ -1,32 +1,16 @@
 import { include } from 'wild-wild-utils'
 
+import {
+  returnFalse,
+  returnTrue,
+  isOne,
+  isObject,
+  isNotObject,
+  isNamedTwo,
+} from '../helpers/functions.js'
 import { getChild } from '../helpers/inherited.js'
 import { testOutput } from '../helpers/output.js'
 import { testValidation } from '../helpers/validate.js'
-
-const returnFalse = function () {
-  return false
-}
-
-const returnTrue = function () {
-  return true
-}
-
-const isOne = function (value) {
-  return value === 1
-}
-
-const isObject = function (value) {
-  return typeof value === 'object'
-}
-
-const isNotObject = function (value) {
-  return typeof value !== 'object'
-}
-
-const isNamedTwo = function ({ path }) {
-  return path[0] === 'two'
-}
 
 const child = getChild()
 
