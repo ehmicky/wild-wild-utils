@@ -1,7 +1,7 @@
 import { merge } from 'wild-wild-utils'
 
-import { testMutate } from '../helpers/mutate.js'
-import { testValidation } from '../helpers/validate.js'
+import { testMutate } from '../../helpers/mutate.js'
+import { testValidation } from '../../helpers/validate.js'
 
 testMutate('merge', merge, [
   // Shallow and deep merge
