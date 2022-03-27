@@ -83,7 +83,7 @@ testMutate('map', map, [
   { input: [getChild(), '/inherited/', addOne], output: getChild() },
   {
     input: [getChild(), '/inherited/', addOne],
-    opts: { classes: true },
+    opts: { classes: true, mutate: true },
     output: getChild(),
   },
   {
@@ -93,4 +93,4 @@ testMutate('map', map, [
   },
 ])
 
-testValidation('map', map, [[{}, true]])
+testValidation('map', map, [[{}, true, identity]])

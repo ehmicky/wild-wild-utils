@@ -1,16 +1,21 @@
 // Retrieve class instances with both own and inherited properties
 /* eslint-disable fp/no-class, fp/no-this, fp/no-mutation */
-export const getChild = function ({ own = 'own', inherited } = {}) {
+export const getChild = function (opts = {}) {
   class Parent {}
   Parent.prototype.inherited = 'inherited'
 
   class Child extends Parent {
     constructor() {
       super()
-      this.own = own
 
-      if (inherited !== undefined) {
-        this.inherited = inherited
+      if (!('own' in opts)) {
+        this.own = 'own'
+      } else if (opts.own !== undefined) {
+        this.own = opts.own
+      }
+
+      if ('inherited' in opts) {
+        this.inherited = opts.inherited
       }
     }
   }
