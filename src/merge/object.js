@@ -20,7 +20,7 @@ const boundIsMergeableObject = function (classes, value) {
 
 // Unless `deep` is true, merging is shallow
 const shallowMergeValue = function ({ value, newValue, mutate, classes }) {
-  if (!isObject(value, classes) || !isObject(newValue, classes)) {
+  if (!isObject(value, classes)) {
     return newValue
   }
 
