@@ -6,13 +6,13 @@ export const mergeValues = function (
   mapFunc,
   target,
   query,
-  newValues,
+  newValue,
   { mutate, roots, leaves, missing = true, classes, inherited, deep } = {},
 ) {
   return map(
     target,
     query,
-    (value) => mapFunc(value, newValues, { mutate, classes, deep }),
+    (value) => mapFunc(value, newValue, { mutate, classes, deep }),
     { mutate, roots, leaves, missing, entries: false, classes, inherited },
   )
 }

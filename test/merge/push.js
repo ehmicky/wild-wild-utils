@@ -56,4 +56,10 @@ testOutput('push', push, [
   },
 ])
 
-testValidation('push', push, [[{}, true, 1]])
+const invalidArguments = [
+  [{}, true, [1]],
+  [{}, '.', 1],
+]
+
+testValidation('push', push, invalidArguments)
+testValidation('unshift', unshift, invalidArguments)
