@@ -46,3 +46,9 @@ export function push(
   values: readonly any[],
   options?: Options,
 ): Target
+export function unshift(
+  target: Target,
+  query: Query,
+  values: readonly any[],
+  options?: Options,
+): Target

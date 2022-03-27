@@ -6,6 +6,7 @@ import {
   exclude,
   merge,
   push,
+  unshift,
   MergeOptions,
 } from 'wild-wild-utils'
 import type { Target, Entry } from 'wild-wild-path'
@@ -73,3 +74,11 @@ expectError(push(true, 'prop', [1]))
 expectError(push({}, true, [1]))
 expectError(push({}, 'prop', true))
 expectError(push({}, 'prop', [1], true))
+
+expectType<Target>(unshift({}, 'prop', [1]))
+unshift({}, ['prop'], [1])
+unshift({}, 'prop', [1], { sort: true })
+expectError(unshift(true, 'prop', [1]))
+expectError(unshift({}, true, [1]))
+expectError(unshift({}, 'prop', true))
+expectError(unshift({}, 'prop', [1], true))
