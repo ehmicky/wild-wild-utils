@@ -1,11 +1,11 @@
 import { mergeValues } from './common.js'
 
-const pushValue = function (value, newValues, opts) {
+const pushValue = function (value, newValues, { mutate }) {
   if (!Array.isArray(value)) {
     return newValues
   }
 
-  if (!opts.mutate) {
+  if (!mutate) {
     return [...value, ...newValues]
   }
 
