@@ -107,4 +107,8 @@ testOutput('merge', merge, [
   },
 ])
 
-testValidation('merge', merge, [[{}, true, { one: 1 }]])
+testValidation('merge', merge, [
+  [{}, true, { one: 1 }],
+  [{}, '.', 1],
+  [{}, '.', 1, { classes: true }],
+])

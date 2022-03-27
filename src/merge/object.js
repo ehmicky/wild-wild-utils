@@ -1,11 +1,14 @@
 import deepmerge from 'deepmerge'
 import { isObject } from 'wild-wild-path'
 
+import { validateObject } from '../validate.js'
+
 import { mergeValues } from './common.js'
 
 // Only own properties are currently merged, even if `inherited` is `true`.
 // Non-enumerable properties are ignored.
 const mergeValue = function (value, newValue, { mutate, classes, deep }) {
+  validateObject(newValue, classes)
   return deep
     ? deepmerge(value, newValue, {
         clone: !mutate,
