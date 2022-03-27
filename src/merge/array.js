@@ -2,9 +2,20 @@ import { validateArray } from '../validate.js'
 
 import { mergeValues } from './common.js'
 
-const pushValue = function (value, newValueArray, { mutate }) {
+// Like `set()` but push|unshift an array of values to the target array instead
+// eslint-disable-next-line max-params
+const mergeArrayValues = function (
+  mergeFunc,
+  target,
+  query,
+  newValueArray,
+  opts,
+) {
   validateArray(newValueArray)
+  return mergeValues(mergeFunc, target, query, newValueArray, opts)
+}
 
+const pushValue = function (value, newValueArray, { mutate }) {
   if (!Array.isArray(value)) {
     return newValueArray
   }
@@ -22,12 +33,9 @@ const pushValue = function (value, newValueArray, { mutate }) {
   return value
 }
 
-// Like `set()` but push an array of values to the target array instead
-export const push = mergeValues.bind(undefined, pushValue)
+export const push = mergeArrayValues.bind(undefined, pushValue)
 
 const unshiftValue = function (value, newValueArray, { mutate }) {
-  validateArray(newValueArray)
-
   if (!Array.isArray(value)) {
     return newValueArray
   }
@@ -46,4 +54,4 @@ const unshiftValue = function (value, newValueArray, { mutate }) {
 }
 
 // Like `push()` but from the beginning
-export const unshift = mergeValues.bind(undefined, unshiftValue)
+export const unshift = mergeArrayValues.bind(undefined, unshiftValue)
