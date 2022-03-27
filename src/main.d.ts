@@ -43,12 +43,12 @@ export function merge(
 export function push(
   target: Target,
   query: Query,
-  values: readonly any[],
+  values: readonly Array<any>,
   options?: Options,
 ): Target
 export function unshift(
   target: Target,
   query: Query,
-  values: readonly any[],
+  values: readonly Array<any>,
   options?: Options,
 ): Target
