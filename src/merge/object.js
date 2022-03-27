@@ -1,38 +1,26 @@
 import deepmerge from 'deepmerge'
-import isPlainObj from 'is-plain-obj'
+import { isObject } from 'wild-wild-path'
 
 import { mergeValues } from './common.js'
 
 // Only own properties are currently merged, even if `inherited` is `true`.
 // Non-enumerable properties are ignored.
 const mergeValue = function (value, newValue, { mutate, classes, deep }) {
-  const isMergeableObject = getIsMergeableObject(classes)
   return deep
-    ? deepmerge(value, newValue, { clone: !mutate, isMergeableObject })
-    : shallowMergeValue({ value, newValue, mutate, isMergeableObject })
+    ? deepmerge(value, newValue, {
+        clone: !mutate,
+        isMergeableObject: boundIsMergeableObject.bind(undefined, classes),
+      })
+    : shallowMergeValue({ value, newValue, mutate, classes })
 }
 
-// Use similar recursion logic as `iterate()` depending on `classes`
-const getIsMergeableObject = function (classes) {
-  return classes ? isObjArr : isPlainObjArr
-}
-
-const isObjArr = function (value) {
-  return typeof value === 'object' && value !== null
-}
-
-const isPlainObjArr = function (value) {
-  return isPlainObj(value) || Array.isArray(value)
+const boundIsMergeableObject = function (classes, value) {
+  return isObject(value, classes) || Array.isArray(value)
 }
 
 // Unless `deep` is true, merging is shallow
-const shallowMergeValue = function ({
-  value,
-  newValue,
-  mutate,
-  isMergeableObject,
-}) {
-  if (!isMergeableObject(value)) {
+const shallowMergeValue = function ({ value, newValue, mutate, classes }) {
+  if (!isObject(value, classes) || !isObject(newValue, classes)) {
     return newValue
   }
 
