@@ -88,16 +88,13 @@ testOutput('merge', merge, [
     },
   ]),
   ...[
-    {
-      classes: false,
-      output: { one: { two: getChild({ own: { four: 0 } }) } },
-    },
-    { classes: true, output: { one: { two: { own: { three: 3, four: 0 } } } } },
+    { classes: false, output: { one: { two: getChild({ own: { six: 0 } }) } } },
+    { classes: true, output: { one: { two: { own: { three: 3, six: 0 } } } } },
   ].map(({ classes, output }) => ({
     input: [
       { one: { two: { own: { three: 3 } } } },
       'one',
-      { two: getChild({ own: { four: 0 } }) },
+      { two: getChild({ own: { six: 0 } }) },
       { classes, mutate: true, deep: true },
     ],
     output,
