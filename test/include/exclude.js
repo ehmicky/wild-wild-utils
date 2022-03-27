@@ -63,4 +63,7 @@ testMutate('exclude', exclude, [
   },
 ])
 
-testValidation('exclude', exclude, [[{}, true, returnFalse]])
+testValidation('exclude', exclude, [
+  [{}, true, returnFalse],
+  [{}, '.', true],
+])

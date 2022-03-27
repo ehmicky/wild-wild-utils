@@ -85,4 +85,7 @@ testOutput('include', include, [
   },
 ])
 
-testValidation('include', include, [[{}, true, returnTrue]])
+testValidation('include', include, [
+  [{}, true, returnTrue],
+  [{}, '.', true],
+])

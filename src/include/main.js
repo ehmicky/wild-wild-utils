@@ -1,5 +1,7 @@
 import { set, remove } from 'wild-wild-path'
 
+import { validateFunction } from '../validate.js'
+
 import { reduceParents } from './reduce.js'
 
 // Returns an object with only the properties being queried.
@@ -29,6 +31,7 @@ export const include = function (
   condition,
   { sort, entries, classes, inherited } = {},
 ) {
+  validateFunction(condition)
   const setFunc = pickEntry.bind(undefined, { classes, inherited })
   return reduceParents({
     setFunc,
@@ -60,6 +63,7 @@ export const exclude = function (
   condition,
   { mutate, entries, classes, inherited } = {},
 ) {
+  validateFunction(condition)
   const setFunc = excludeEntry.bind(undefined, { mutate, classes, inherited })
   return reduceParents({
     setFunc,
