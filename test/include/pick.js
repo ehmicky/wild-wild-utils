@@ -1,8 +1,8 @@
 import { pick } from 'wild-wild-utils'
 
-import { getChild } from './helpers/inherited.js'
-import { testOutput } from './helpers/output.js'
-import { testValidation } from './helpers/validate.js'
+import { getChild } from '../helpers/inherited.js'
+import { testOutput } from '../helpers/output.js'
+import { testValidation } from '../helpers/validate.js'
 
 const child = getChild()
 

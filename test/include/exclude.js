@@ -1,8 +1,8 @@
 import { exclude } from 'wild-wild-utils'
 
-import { getChild } from './helpers/inherited.js'
-import { testMutate } from './helpers/mutate.js'
-import { testValidation } from './helpers/validate.js'
+import { getChild } from '../helpers/inherited.js'
+import { testMutate } from '../helpers/mutate.js'
+import { testValidation } from '../helpers/validate.js'
 
 const returnFalse = function () {
   return false
