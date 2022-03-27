@@ -26,3 +26,9 @@ export function include<T extends Options>(
   testFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
   options?: T,
 ): Target
+export function exclude<T extends Options>(
+  target: Target,
+  query: Query,
+  testFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
+  options?: T,
+): Target
