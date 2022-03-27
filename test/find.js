@@ -17,7 +17,7 @@ const child = getChild()
 testOutput('find', find, [
   { input: [{ one: 1, two: 2 }, '*', isTwo], output: 2 },
   { input: [{ one: 1, two: 2 }, '*', returnTrue], output: 1 },
-  { input: [{}, '*', returnTrue], output: undefined },
+  { input: [{}, 'one', returnTrue], output: undefined },
 
   // `childFirst`, `leaves` and `roots` options
   { input: [{ one: 1 }, '**', returnTrue], output: { one: 1 } },
@@ -37,7 +37,7 @@ testOutput('find', find, [
     input: [{ one: 1 }, '*', returnTrue, { entries: true }],
     output: { value: 1, path: ['one'], missing: false },
   },
-  { input: [{}, '*', returnTrue, { entries: true }], output: undefined },
+  { input: [{}, 'one', returnTrue, { entries: true }], output: undefined },
 
   // `classes` and `inherited` options
   { input: [child, 'own', returnTrue], output: undefined },
