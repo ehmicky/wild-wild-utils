@@ -1,6 +1,16 @@
-import { map, find, pick, include, exclude } from 'wild-wild-utils'
+import {
+  map,
+  find,
+  pick,
+  include,
+  exclude,
+  merge,
+  MergeOptions,
+} from 'wild-wild-utils'
 import type { Target, Entry } from 'wild-wild-path'
 import { expectType, expectNotType, expectError } from 'tsd'
+
+const mergeOptions: MergeOptions = { deep: true, sort: false }
 
 const mapValue = (value: any): any => value
 const mapEntry = (entry: Entry): Entry => entry
@@ -46,3 +56,11 @@ expectError(exclude(true, 'prop', testEntry))
 expectError(exclude({}, true, testEntry))
 expectError(exclude({}, 'prop', true))
 expectError(exclude({}, 'prop', testEntry, true))
+
+expectType<Target>(merge({}, 'prop', {}))
+merge({}, ['prop'], {})
+merge({}, 'prop', {}, { deep: true })
+expectError(merge(true, 'prop', {}))
+expectError(merge({}, true, {}))
+expectError(merge({}, 'prop', true))
+expectError(merge({}, 'prop', {}, true))

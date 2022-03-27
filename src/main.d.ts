@@ -7,6 +7,7 @@ type TestValue = (value: Value) => boolean
 type TestEntry = (entry: Entry) => boolean
 
 type OptionsWithEntries = Options & { entries: true }
+export type MergeOptions = Options & { readonly deep: true }
 
 export function map<T extends Options>(
   target: Target,
@@ -32,4 +33,10 @@ export function exclude<T extends Options>(
   query: Query,
   testFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
   options?: T,
+): Target
+export function merge(
+  target: Target,
+  query: Query,
+  value: object,
+  options?: MergeOptions,
 ): Target
