@@ -20,6 +20,7 @@ export function find<T extends Options>(
   testFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
   options?: T,
 ): T extends OptionsWithEntries ? Entry : Value
+export function pick(target: Target, query: Query, options?: Options): Target
 export function include<T extends Options>(
   target: Target,
   query: Query,
