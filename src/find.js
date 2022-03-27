@@ -1,5 +1,7 @@
 import { iterate } from 'wild-wild-path'
 
+import { validateFunction } from './validate.js'
+
 // Find the first non-missing property that matches a condition
 // eslint-disable-next-line max-params
 export const find = function (
@@ -8,6 +10,8 @@ export const find = function (
   condition,
   { childFirst, roots, leaves, sort, entries, classes, inherited } = {},
 ) {
+  validateFunction(condition)
+
   // eslint-disable-next-line fp/no-loops
   for (const entry of iterate(target, query, {
     childFirst,

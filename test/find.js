@@ -59,4 +59,7 @@ testOutput('find', find, [
   },
 ])
 
-testValidation('find', find, [[{}, true]])
+testValidation('find', find, [
+  [{}, true, returnTrue],
+  [{}, '.', true],
+])
