@@ -44,13 +44,13 @@ testMutate('merge', merge, [
     output: { one: { two: { three: 3, four: 0 } } },
   },
   {
-    input: [{ one: { two: [{ three: 3 }] } }, 'one', { two: [{ four: 0 }] }],
-    output: { one: { two: [{ four: 0 }] } },
+    input: [{ one: { two: [{}] } }, 'one', { two: [{ three: 1 }] }],
+    output: { one: { two: [{ three: 1 }] } },
   },
   {
-    input: [{ one: { two: [{ three: 3 }] } }, 'one', { two: [{ four: 0 }] }],
     opts: { deep: true },
-    output: { one: { two: [{ three: 3 }, { four: 0 }] } },
+    output: { one: { two: [{}, { three: 1 }] } },
+    input: [{ one: { two: [{}] } }, 'one', { two: [{ three: 1 }] }],
   },
 
   // `leaves` and `roots` options
