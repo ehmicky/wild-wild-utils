@@ -5,6 +5,7 @@ import {
   include,
   exclude,
   merge,
+  push,
   MergeOptions,
 } from 'wild-wild-utils'
 import type { Target, Entry } from 'wild-wild-path'
@@ -57,10 +58,18 @@ expectError(exclude({}, true, testEntry))
 expectError(exclude({}, 'prop', true))
 expectError(exclude({}, 'prop', testEntry, true))
 
-expectType<Target>(merge({}, 'prop', {}))
-merge({}, ['prop'], {})
-merge({}, 'prop', {}, { deep: true })
-expectError(merge(true, 'prop', {}))
-expectError(merge({}, true, {}))
+expectType<Target>(merge({}, 'prop', { one: 1 }))
+merge({}, ['prop'], { one: 1 })
+merge({}, 'prop', { one: 1 }, { deep: true })
+expectError(merge(true, 'prop', { one: 1 }))
+expectError(merge({}, true, { one: 1 }))
 expectError(merge({}, 'prop', true))
-expectError(merge({}, 'prop', {}, true))
+expectError(merge({}, 'prop', { one: 1 }, true))
+
+expectType<Target>(push({}, 'prop', [1]))
+push({}, ['prop'], [1])
+push({}, 'prop', [1], { sort: true })
+expectError(push(true, 'prop', [1]))
+expectError(push({}, true, [1]))
+expectError(push({}, 'prop', true))
+expectError(push({}, 'prop', [1], true))

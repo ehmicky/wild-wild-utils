@@ -40,3 +40,9 @@ export function merge(
   value: object,
   options?: MergeOptions,
 ): Target
+export function push(
+  target: Target,
+  query: Query,
+  values: readonly any[],
+  options?: Options,
+): Target
