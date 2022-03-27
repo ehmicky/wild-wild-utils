@@ -2,6 +2,8 @@ import test from 'ava'
 import { each } from 'test-each'
 import { find } from 'wild-wild-utils'
 
+import { getChild } from './helpers/inherited.js'
+
 const isTwo = function (value) {
   return value === 2
 }
@@ -9,6 +11,8 @@ const isTwo = function (value) {
 const returnTrue = function () {
   return true
 }
+
+const child = getChild()
 
 each(
   [
@@ -35,6 +39,24 @@ each(
       output: { value: 1, path: ['one'], missing: false },
     },
     { input: [{}, '*', returnTrue, { entries: true }], output: undefined },
+
+    // `classes` and `inherited` options
+    { input: [child, 'own', returnTrue], output: undefined },
+    { input: [child, 'own', returnTrue, { classes: true }], output: 'own' },
+    { input: [child, '/inherited/', returnTrue], output: undefined },
+    {
+      input: [child, '/inherited/', returnTrue, { classes: true }],
+      output: undefined,
+    },
+    {
+      input: [
+        child,
+        '/inherited/',
+        returnTrue,
+        { classes: true, inherited: true },
+      ],
+      output: 'inherited',
+    },
   ],
   ({ title }, { input, output }) => {
     test(`find() output | ${title}`, (t) => {
