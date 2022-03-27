@@ -3,6 +3,7 @@ import { each } from 'test-each'
 import { find } from 'wild-wild-utils'
 
 import { getChild } from './helpers/inherited.js'
+import { testValidation } from './helpers/validate.js'
 
 const isTwo = function (value) {
   return value === 2
@@ -64,3 +65,5 @@ each(
     })
   },
 )
+
+testValidation('find', find, [[{}, true]])
