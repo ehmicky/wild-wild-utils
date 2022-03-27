@@ -7,7 +7,7 @@ export const mergeValues = function (
   target,
   query,
   newValues,
-  { mutate, roots, leaves, missing, classes, inherited, deep } = {},
+  { mutate, roots, leaves, missing = true, classes, inherited, deep } = {},
 ) {
   return map(
     target,
