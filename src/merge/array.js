@@ -20,10 +20,12 @@ const pushValue = function (value, newValueArray, { mutate }) {
     return newValueArray
   }
 
-  if (!mutate) {
-    return [...value, ...newValueArray]
-  }
+  return mutate
+    ? pushValueMutate(value, newValueArray)
+    : pushValueClone(value, newValueArray)
+}
 
+const pushValueMutate = function (value, newValueArray) {
   // eslint-disable-next-line fp/no-loops
   for (const newValue of newValueArray) {
     // eslint-disable-next-line fp/no-mutating-methods
@@ -33,6 +35,10 @@ const pushValue = function (value, newValueArray, { mutate }) {
   return value
 }
 
+const pushValueClone = function (value, newValueArray) {
+  return [...value, ...newValueArray]
+}
+
 export const push = mergeArrayValues.bind(undefined, pushValue)
 
 const unshiftValue = function (value, newValueArray, { mutate }) {
@@ -40,10 +46,12 @@ const unshiftValue = function (value, newValueArray, { mutate }) {
     return newValueArray
   }
 
-  if (!mutate) {
-    return [...newValueArray, ...value]
-  }
+  return mutate
+    ? unshiftValueMutate(value, newValueArray)
+    : unshiftValueClone(value, newValueArray)
+}
 
+const unshiftValueMutate = function (value, newValueArray) {
   // eslint-disable-next-line fp/no-loops, fp/no-let, fp/no-mutation
   for (let index = newValueArray.length - 1; index >= 0; index -= 1) {
     // eslint-disable-next-line fp/no-mutating-methods
@@ -51,6 +59,10 @@ const unshiftValue = function (value, newValueArray, { mutate }) {
   }
 
   return value
+}
+
+const unshiftValueClone = function (value, newValueArray) {
+  return [...newValueArray, ...value]
 }
 
 // Like `push()` but from the beginning
