@@ -17,6 +17,12 @@ export function map<T extends Options>(
 export function find<T extends Options>(
   target: Target,
   query: Query,
-  mapFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
+  testFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
   options?: T,
 ): T extends OptionsWithEntries ? Entry : Value
+export function include<T extends Options>(
+  target: Target,
+  query: Query,
+  testFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
+  options?: T,
+): Target

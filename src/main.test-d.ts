@@ -1,4 +1,4 @@
-import { map, find } from 'wild-wild-utils'
+import { map, find, include } from 'wild-wild-utils'
 import type { Target, Entry } from 'wild-wild-path'
 import { expectType, expectNotType, expectError } from 'tsd'
 
@@ -21,3 +21,10 @@ expectError(find(true, 'prop', testEntry))
 expectError(find({}, true, testEntry))
 expectError(find({}, 'prop', true))
 expectError(find({}, 'prop', testEntry, true))
+
+expectType<Target>(include({}, 'prop', testValue))
+include({}, 'prop', testEntry, { entries: true })
+expectError(include(true, 'prop', testEntry))
+expectError(include({}, true, testEntry))
+expectError(include({}, 'prop', true))
+expectError(include({}, 'prop', testEntry, true))
