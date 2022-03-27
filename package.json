@@ -50,7 +50,7 @@
   "dependencies": {
     "deepmerge": "^4.2.2",
     "wild-wild-parser": "^1.0.1",
-    "wild-wild-path": "^1.0.1"
+    "wild-wild-path": "^1.0.2"
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^1.0.68",
