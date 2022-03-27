@@ -2,6 +2,8 @@
 // additional utilities built on top of it.
 import { list, get, set } from 'wild-wild-path'
 
+import { validateFunction } from './validate.js'
+
 // Map values matching a query.
 // Missing entries are mapped too
 //  - This allows logic such as adding default values
@@ -27,6 +29,7 @@ export const map = function (
     inherited,
   } = {},
 ) {
+  validateFunction(mapFunc)
   const entries = list(target, query, {
     childFirst: true,
     roots,

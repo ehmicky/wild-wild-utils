@@ -93,4 +93,7 @@ testMutate('map', map, [
   },
 ])
 
-testValidation('map', map, [[{}, true, identity]])
+testValidation('map', map, [
+  [{}, true, identity],
+  [{}, '.', true],
+])
