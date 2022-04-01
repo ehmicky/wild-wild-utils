@@ -58,11 +58,16 @@ testMutate('merge', merge, [
     input: [{ one: { two: { three: 3 } } }, 'one one.two', { four: 0 }],
     output: { one: { two: { three: 3, four: 0 }, four: 0 } },
   },
-  ...[{ leaves: true }, { roots: true }].map((opts) => ({
+  {
     input: [{ one: { two: { three: 3 } } }, 'one one.two', { four: 0 }],
-    opts,
+    opts: { leaves: true },
     output: { one: { two: { three: 3, four: 0 } } },
-  })),
+  },
+  {
+    input: [{ one: { two: { three: 3 } } }, 'one one.two', { four: 0 }],
+    opts: { roots: true },
+    output: { one: { two: { three: 3 }, four: 0 } },
+  },
 ])
 
 testOutput('merge', merge, [
