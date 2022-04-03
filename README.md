@@ -73,43 +73,23 @@ is shallow unless the [`deep`](#deep) option is `true`.
 
 ```js
 const target = {
-  userOne: {
-    firstName: 'Alice',
-    lastName: 'Smith',
-    settings: { deleted: true },
-  },
-  userTwo: {
-    firstName: 'John',
-    lastName: 'Doe',
-    settings: { deleted: false },
-  },
+  userOne: { firstName: 'Alice', settings: { deleted: true } },
+  userTwo: { firstName: 'John', settings: { deleted: false } },
 }
 merge(target, '*', { age: 72, settings: { admin: true } })
 // {
-//   userOne: {
-//     firstName: 'Alice',
-//     lastName: 'Smith',
-//     age: 72,
-//     settings: { admin: true },
-//   },
-//   userTwo: {
-//     firstName: 'John',
-//     lastName: 'Doe',
-//     age: 72,
-//     settings: { admin: true },
-//   },
+//   userOne: { firstName: 'Alice', age: 72, settings: { admin: true } },
+//   userTwo: { firstName: 'John', age: 72, settings: { admin: true } },
 // }
 merge(target, '*', { age: 72, settings: { admin: true } }, { deep: true })
 // {
 //   userOne: {
 //     firstName: 'Alice',
-//     lastName: 'Smith',
 //     age: 72,
 //     settings: { deleted: true, admin: true },
 //   },
 //   userTwo: {
 //     firstName: 'John',
-//     lastName: 'Doe',
 //     age: 72,
 //     settings: { deleted: false, admin: true },
 //   },
