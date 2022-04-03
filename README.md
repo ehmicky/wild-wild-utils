@@ -159,11 +159,12 @@ deeply cloned.\
 When `true`, it is directly mutated instead, which is faster but has side effects.
 
 ```js
-const target = {}
-console.log(set(target, 'name', 'Alice')) // { name: 'Alice' }
-console.log(target) // {}
-console.log(set(target, 'name', 'Alice', { mutate: true })) // { name: 'Alice' }
-console.log(target) // { name: 'Alice' }
+const target = { colors: ['red'] }
+console.log(push(target, 'colors', ['blue'])) // { colors: ['red', 'blue'] }
+console.log(target) // { colors: ['red'] }
+console.log(set(target, 'name', 'Alice', { mutate: true }))
+// { colors: ['red', 'blue'] }
+console.log(target) // { colors: ['red', 'blue'] }
 ```
 
 ### entries
@@ -186,12 +187,14 @@ When `true`, objects with the following shape are returned instead:
 
 ```js
 const target = { firstName: 'Alice', lastName: 'Smith' }
-list(target, '*') // ['Alice', 'Smith']
-list(target, '*', { entries: true })
-// [
-//   { value: 'Alice', path: ['firstName'], missing: false },
-//   { value: 'Smith', path: ['lastName'], missing: false },
-// ]
+find(target, '*', (value) => value !== '') // 'Alice'
+find(
+  target,
+  '*',
+  (entry) => entry.value !== '' && entry.path[0] !== 'firstName',
+  { entries: true },
+)
+// { value: 'Smith', path: ['lastName'], missing: false },
 ```
 
 ### missing
@@ -210,12 +213,14 @@ are ignored.
 ```js
 const target = {}
 
-set(target, 'name', 'Alice') // { name: 'Alice' }
-set(target, 'name', 'Alice', { missing: false }) // {}
+push(target, 'colors', ['red']) // { colors: ['red'] }
+push(target, 'colors', ['red'], { missing: false }) // {}
 
-list(target, 'name') // []
-list(target, 'name', { missing: true, entries: true })
-// [{ value: undefined, path: ['name'], missing: true }]
+map(target, 'name', (value = 'defaultName') => value) // {}
+map(target, 'name', ({ value = 'defaultName' }) => value, {
+  missing: true,
+  entries: true,
+}) // { name: 'defaultName' }
 ```
 
 ### sort
@@ -230,9 +235,10 @@ When returning sibling object properties, sort them by the lexigographic order
 of their names (not values).
 
 ```js
-const target = { lastName: 'Doe', firstName: 'John' }
-list(target, '*') // ['Doe', 'John']
-list(target, '*', { sort: true }) // ['John', 'Doe']
+const target = { user: { lastName: 'Doe', firstName: 'John', age: 72 } }
+pick(target, 'user./Name/') // { user: { lastName: 'Doe', firstName: 'John' } }
+pick(target, 'user./Name/', { sort: true })
+// { user: { firstName: 'John', lastName: 'Doe' } }
 ```
 
 ### childFirst
@@ -249,9 +255,10 @@ This option decides whether the returned properties should be sorted from
 children to parents, or the reverse.
 
 ```js
-const target = { user: { name: 'Alice' } }
-list(target, 'user.**') // [{ name: 'Alice' }, 'Alice']
-list(target, 'user.**', { childFirst: true }) // ['Alice', { name: 'Alice' }]
+const target = { user: { firstName: 'Alice', lastName: '' } }
+const isDefined = (value) => value !== ''
+find(target, 'user.**', isDefined) // { firstName: 'Alice' }
+find(target, 'user.**', isDefined, { childFirst: true }) // 'Alice'
 ```
 
 ### leaves
@@ -272,9 +279,11 @@ When `true`, only leaves are matched. In other words, a matching property is
 ignored if one of its children also matches.
 
 ```js
-const target = { user: { name: 'Alice' } }
-list(target, 'user.**') // [{ name: 'Alice' }, 'Alice']
-list(target, 'user.**', { leaves: true }) // ['Alice']
+const target = { user: { firstName: 'Alice', lastName: 'Smith' } }
+merge(target, '**', { age: 72 })
+// { user: { firstName: 'Alice', lastName: 'Smith', age: 72 }, age: 72 }
+merge(target, '**', { age: 72 }, { leaves: true })
+// { user: { firstName: 'Alice', lastName: 'Smith', age: 72 } }
 ```
 
 ### roots
@@ -295,9 +304,11 @@ When `true`, only roots are matched. In other words, a matching property is
 ignored if one of its parents also matches.
 
 ```js
-const target = { user: { name: 'Alice' } }
-list(target, 'user.**') // [{ name: 'Alice' }, 'Alice']
-list(target, 'user.**', { roots: true }) // [{ name: 'Alice' }]
+const target = { user: { firstName: 'Alice', lastName: 'Smith' } }
+merge(target, '**', { age: 72 })
+// { user: { firstName: 'Alice', lastName: 'Smith', age: 72 }, age: 72 }
+merge(target, '**', { age: 72 }, { roots: true })
+// { user: { firstName: 'Alice', lastName: 'Smith' }, age: 72 }
 ```
 
 ### classes
@@ -311,8 +322,9 @@ class instances, errors or functions) are ignored.
 
 ```js
 const target = { user: new User({ name: 'Alice' }) }
-list(target, 'user.*') // []
-list(target, 'user.*', { classes: true }) // ['Alice']
+const isDefined = (value) => value !== ''
+find(target, 'user.*', isDefined) // undefined
+find(target, 'user.*', isDefined, { classes: true }) // 'Alice'
 ```
 
 ### inherited
