@@ -21,11 +21,11 @@ Available functional methods include:
   [`exclude()`](#excludetarget-query-testfunction-options)
 
 Unlike similar libraries, object properties can be get/set using
-[dot-delimited paths](https://github.com/ehmicky/wild-wild-path#deep-properties),
-[wildcards](https://github.com/ehmicky/wild-wild-path#wildcards),
-[regexps](https://github.com/ehmicky/wild-wild-path#regexps),
-[slices](https://github.com/ehmicky/wild-wild-path#array-slices) and
-[unions](https://github.com/ehmicky/wild-wild-path#unions). It is built on top
+[dot-delimited paths](https://github.com/ehmicky/wild-wild-path#%EF%B8%8F-deep-properties),
+[wildcards](https://github.com/ehmicky/wild-wild-path#-wildcards),
+[regexps](https://github.com/ehmicky/wild-wild-path#%EF%B8%8F-regexps),
+[slices](https://github.com/ehmicky/wild-wild-path#%EF%B8%8F-array-slices) and
+[unions](https://github.com/ehmicky/wild-wild-path#-unions). It is built on top
 of [`wild-wild-path`](https://github.com/ehmicky/wild-wild-path).
 
 # Install
@@ -258,8 +258,8 @@ _Methods_: [`find()`](#findtarget-query-testfunction-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
-When using [unions](https://github.com/ehmicky/wild-wild-path#unions) or
-[deep wildcards](https://github.com/ehmicky/wild-wild-path#wildcards), a query
+When using [unions](https://github.com/ehmicky/wild-wild-path#-unions) or
+[deep wildcards](https://github.com/ehmicky/wild-wild-path#-wildcards), a query
 might match both a property and some of its children.
 
 This option decides whether the returned properties should be sorted from
@@ -282,8 +282,8 @@ _Methods_: [`map()`](#maptarget-query-mapfunction-options),
 _Type_: `boolean`\
 _Default_: `false`
 
-When using [unions](https://github.com/ehmicky/wild-wild-path#unions) or
-[deep wildcards](https://github.com/ehmicky/wild-wild-path#wildcards), a query
+When using [unions](https://github.com/ehmicky/wild-wild-path#-unions) or
+[deep wildcards](https://github.com/ehmicky/wild-wild-path#-wildcards), a query
 might match both a property and some of its children.
 
 When `true`, only leaves are matched. In other words, a matching property is
@@ -307,8 +307,8 @@ _Methods_: [`map()`](#maptarget-query-mapfunction-options),
 _Type_: `boolean`\
 _Default_: `false`
 
-When using [unions](https://github.com/ehmicky/wild-wild-path#unions) or
-[deep wildcards](https://github.com/ehmicky/wild-wild-path#wildcards), a query
+When using [unions](https://github.com/ehmicky/wild-wild-path#-unions) or
+[deep wildcards](https://github.com/ehmicky/wild-wild-path#-wildcards), a query
 might match both a property and some of its children.
 
 When `true`, only roots are matched. In other words, a matching property is
@@ -344,14 +344,14 @@ _Methods_: all\
 _Type_: `boolean`\
 _Default_: `false`
 
-By default, [wildcards](https://github.com/ehmicky/wild-wild-path#wildcards) and
-[regexps](https://github.com/ehmicky/wild-wild-path#regexps) ignore properties
-that are either
+By default, [wildcards](https://github.com/ehmicky/wild-wild-path#-wildcards)
+and [regexps](https://github.com/ehmicky/wild-wild-path#%EF%B8%8F-regexps)
+ignore properties that are either
 [inherited](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 or
 [not enumerable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
 Those can still be matched by using their
-[property name](https://github.com/ehmicky/wild-wild-path#deep-properties).
+[property name](https://github.com/ehmicky/wild-wild-path#%EF%B8%8F-deep-properties).
 
 When `true`, inherited properties are not ignored, but not enumerable ones still
 are.
