@@ -146,7 +146,11 @@ Options are optional plain objects. They are almost
 
 ### mutate
 
-_Methods_: \
+_Methods_: [`map()`](#maptarget-query-mapfunction-options),
+[`merge()`](#mergetarget-query-value-options),
+[`push()`](#pushtarget-query-values-options),
+[`unshift()`](#unshifttarget-query-values-options),
+[`exclude()`](#excludetarget-query-testfunction-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
@@ -164,7 +168,10 @@ console.log(target) // { name: 'Alice' }
 
 ### entries
 
-_Methods_: \
+_Methods_: [`map()`](#maptarget-query-mapfunction-options),
+[`find()`](#findtarget-query-testfunction-options),
+[`include()`](#includetarget-query-testfunction-options),
+[`exclude()`](#excludetarget-query-testfunction-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
@@ -189,9 +196,12 @@ list(target, '*', { entries: true })
 
 ### missing
 
-_Methods_: \
+_Methods_: [`map()`](#maptarget-query-mapfunction-options),
+[`merge()`](#mergetarget-query-value-options),
+[`push()`](#pushtarget-query-values-options),
+[`unshift()`](#unshifttarget-query-values-options)\
 _Type_: `boolean`\
-_Default_: `false` with `list|iterate()`, `true` with `set()`
+_Default_: `false` with `map()`, `true` with `merge|push|unshift()`
 
 When `false`, properties
 [not defined in the target](https://github.com/ehmicky/wild-wild-path#undefined-values)
@@ -210,7 +220,9 @@ list(target, 'name', { missing: true, entries: true })
 
 ### sort
 
-_Methods_: \
+_Methods_: [`find()`](#findtarget-query-testfunction-options),
+[`pick()`](#picktarget-query-options),
+[`include()`](#includetarget-query-testfunction-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
@@ -225,7 +237,7 @@ list(target, '*', { sort: true }) // ['John', 'Doe']
 
 ### childFirst
 
-_Methods_: \
+_Methods_: [`find()`](#findtarget-query-testfunction-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
@@ -244,7 +256,11 @@ list(target, 'user.**', { childFirst: true }) // ['Alice', { name: 'Alice' }]
 
 ### leaves
 
-_Methods_: \
+_Methods_: [`map()`](#maptarget-query-mapfunction-options),
+[`merge()`](#mergetarget-query-value-options),
+[`push()`](#pushtarget-query-values-options),
+[`unshift()`](#unshifttarget-query-values-options),
+[`find()`](#findtarget-query-testfunction-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
@@ -263,7 +279,11 @@ list(target, 'user.**', { leaves: true }) // ['Alice']
 
 ### roots
 
-_Methods_: \
+_Methods_: [`map()`](#maptarget-query-mapfunction-options),
+[`merge()`](#mergetarget-query-value-options),
+[`push()`](#pushtarget-query-values-options),
+[`unshift()`](#unshifttarget-query-values-options),
+[`find()`](#findtarget-query-testfunction-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
