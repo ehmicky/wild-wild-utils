@@ -22,8 +22,8 @@ Unlike similar libraries, object properties can be get/set using
 [wildcards](https://github.com/ehmicky/wild-wild-path#wildcards),
 [regexps](https://github.com/ehmicky/wild-wild-path#regexps),
 [slices](https://github.com/ehmicky/wild-wild-path#array-slices) and
-[unions](https://github.com/ehmicky/wild-wild-path#unions) can be used. It is
-built on top of [`wild-wild-path`](https://github.com/ehmicky/wild-wild-path).
+[unions](https://github.com/ehmicky/wild-wild-path#unions). It is built on top
+of [`wild-wild-path`](https://github.com/ehmicky/wild-wild-path).
 
 # Install
 
@@ -44,55 +44,85 @@ not `require()`.
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
 `mapFunction`: `(value) => value`\
-`options`: [`Options?`](#options)
+`options`: [`Options?`](#options)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
+
+Use a mapping function to modify any property matching the `query`.
 
 ### merge(target, query, value, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
 `value`: `object`\
-`options`: [`Options?`](#options)
+`options`: [`Options?`](#options)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
+
+Merge an object `value` with all object properties matching the `query`. If
+those properties are not objects, they are overridden instead.
 
 ### push(target, query, values, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
 `values`: `any[]`\
-`options`: [`Options?`](#options)
+`options`: [`Options?`](#options)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+
+Concatenate an array of `values` with all array properties matching the `query`.
+If those properties are not arrays, they are overridden instead.
 
 ### unshift(target, query, values, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
 `values`: `any[]`\
-`options`: [`Options?`](#options)
+`options`: [`Options?`](#options)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
+
+Like [`push()`](#pushtarget-query-values-options) but concatenates at the
+beginning of each property instead of the end.
 
 ### find(target, query, testFunction, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
 `testFunction`: `(value) => boolean`\
-`options`: [`Options?`](#options)
+`options`: [`Options?`](#options)\
+_Return value_: `any`
+
+Return the first property that both match both the query and return `true` with
+the `testFunction`.
 
 ### pick(target, query, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
-`options`: [`Options?`](#options)
+`options`: [`Options?`](#options)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
+
+Return an object including only the properties matching the query.
 
 ### include(target, query, testFunction, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
 `testFunction`: `(value) => boolean`\
-`options`: [`Options?`](#options)
+`options`: [`Options?`](#options)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
+
+Return an object including only the properties that both match both the query
+and return `true` with the `testFunction`.
 
 ### exclude(target, query, testFunction, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
 `testFunction`: `(value) => boolean`\
-`options`: [`Options?`](#options)
+`options`: [`Options?`](#options)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
+
+Remove any property that both match the query and return `true` with the
+`testFunction`.
 
 ## Options
 
