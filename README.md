@@ -6,13 +6,18 @@
 
 🤠 Functional utilities using object property paths with wildcards and regexps.
 
-Work in progress!
+Available functional utilities include:
 
-# Examples
+- Mapping (`map()`, `merge()`, `push()`, `unshift()`)
+- Filtering (`find()`, `pick()`, `include()`, `exclude()`)
 
-```js
-
-```
+Unlike similar libraries, object properties can be get/set using
+[dot-delimited paths](https://github.com/ehmicky/wild-wild-path#deep-properties),
+[wildcards](https://github.com/ehmicky/wild-wild-path#wildcards),
+[regexps](https://github.com/ehmicky/wild-wild-path#regexps),
+[slices](https://github.com/ehmicky/wild-wild-path#array-slices) and
+[unions](https://github.com/ehmicky/wild-wild-path#unions) can be used. It is
+built on top of [`wild-wild-path`](https://github.com/ehmicky/wild-wild-path).
 
 # Install
 
@@ -24,15 +29,230 @@ This package is an ES module and must be loaded using
 [an `import` or `import()` statement](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c),
 not `require()`.
 
-# Usage
-
-```js
-
-```
-
 # API
 
-## exampleMethod
+## Methods
+
+### map(target, query, mapFunction, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
+`mapFunction`: `(value) => value`\
+`options`: [`Options?`](#options)
+
+### merge(target, query, value, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
+`value`: `object`\
+`options`: [`Options?`](#options)
+
+### push(target, query, values, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
+`values`: `any[]`\
+`options`: [`Options?`](#options)
+
+### unshift(target, query, values, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
+`values`: `any[]`\
+`options`: [`Options?`](#options)
+
+### find(target, query, testFunction, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
+`testFunction`: `(value) => boolean`\
+`options`: [`Options?`](#options)
+
+### pick(target, query, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
+`options`: [`Options?`](#options)
+
+### include(target, query, testFunction, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
+`testFunction`: `(value) => boolean`\
+`options`: [`Options?`](#options)
+
+### exclude(target, query, testFunction, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
+`testFunction`: `(value) => boolean`\
+`options`: [`Options?`](#options)
+
+## Options
+
+Options are optional plain objects. They are almost
+[the same as in `wild-wild-path`](https://github.com/ehmicky/wild-wild-path#options).
+
+### mutate
+
+_Methods_: \
+_Type_: `boolean`\
+_Default_: `false`
+
+By default, the [target](#target) is deeply cloned.\
+When `true`, it is directly mutated instead, which is faster but has side effects.
+
+```js
+const target = {}
+console.log(set(target, 'name', 'Alice')) // { name: 'Alice' }
+console.log(target) // {}
+console.log(set(target, 'name', 'Alice', { mutate: true })) // { name: 'Alice' }
+console.log(target) // { name: 'Alice' }
+```
+
+### entries
+
+_Methods_: \
+_Type_: `boolean`\
+_Default_: `false`
+
+By default, properties' values are returned.\
+When `true`, objects with the following shape are returned instead:
+
+- `value` `any`: property's value
+- `path` [`Path`](#paths): property's full path
+- `missing` `boolean`: whether the property is [missing](#missing) from the
+  [target](#target)
+
+```js
+const target = { firstName: 'Alice', lastName: 'Smith' }
+list(target, '*') // ['Alice', 'Smith']
+list(target, '*', { entries: true })
+// [
+//   { value: 'Alice', path: ['firstName'], missing: false },
+//   { value: 'Smith', path: ['lastName'], missing: false },
+// ]
+```
+
+### missing
+
+_Methods_: \
+_Type_: `boolean`\
+_Default_: `false` with `list|iterate()`, `true` with `set()`
+
+When `false`, properties [not defined in the target](#undefined-values) are
+ignored.
+
+```js
+const target = {}
+
+set(target, 'name', 'Alice') // { name: 'Alice' }
+set(target, 'name', 'Alice', { missing: false }) // {}
+
+list(target, 'name') // []
+list(target, 'name', { missing: true, entries: true })
+// [{ value: undefined, path: ['name'], missing: true }]
+```
+
+### sort
+
+_Methods_: \
+_Type_: `boolean`\
+_Default_: `false`
+
+When returning sibling object properties, sort them by the lexigographic order
+of their names (not values).
+
+```js
+const target = { lastName: 'Doe', firstName: 'John' }
+list(target, '*') // ['Doe', 'John']
+list(target, '*', { sort: true }) // ['John', 'Doe']
+```
+
+### childFirst
+
+_Methods_: \
+_Type_: `boolean`\
+_Default_: `false`
+
+When using [unions](#unions) or [deep wildcards](#wildcards), a query might
+match both a property and some of its children.
+
+This option decides whether the returned properties should be sorted from
+children to parents, or the reverse.
+
+```js
+const target = { user: { name: 'Alice' } }
+list(target, 'user.**') // [{ name: 'Alice' }, 'Alice']
+list(target, 'user.**', { childFirst: true }) // ['Alice', { name: 'Alice' }]
+```
+
+### leaves
+
+_Methods_: \
+_Type_: `boolean`\
+_Default_: `false`
+
+When using [unions](#unions) or [deep wildcards](#wildcards), a query might
+match both a property and some of its children.
+
+When `true`, only leaves are matched. In other words, a matching property is
+ignored if one of its children also matches.
+
+```js
+const target = { user: { name: 'Alice' } }
+list(target, 'user.**') // [{ name: 'Alice' }, 'Alice']
+list(target, 'user.**', { leaves: true }) // ['Alice']
+```
+
+### roots
+
+_Methods_: \
+_Type_: `boolean`\
+_Default_: `false`
+
+When using [unions](#unions) or [deep wildcards](#wildcards), a query might
+match both a property and some of its children.
+
+When `true`, only roots are matched. In other words, a matching property is
+ignored if one of its parents also matches.
+
+```js
+const target = { user: { name: 'Alice' } }
+list(target, 'user.**') // [{ name: 'Alice' }, 'Alice']
+list(target, 'user.**', { roots: true }) // [{ name: 'Alice' }]
+```
+
+### classes
+
+_Methods_: all\
+_Type_: `boolean`\
+_Default_: `false`
+
+Unless `true`, child properties of objects that are not plain objects (like
+class instances, errors or functions) are ignored.
+
+```js
+const target = { user: new User({ name: 'Alice' }) }
+list(target, 'user.*') // []
+list(target, 'user.*', { classes: true }) // ['Alice']
+```
+
+### inherited
+
+_Methods_: all\
+_Type_: `boolean`\
+_Default_: `false`
+
+By default, [wildcards](#wildcards) and [regexps](#regexps) ignore properties
+that are either
+[inherited](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
+or
+[not enumerable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
+Those can still be matched by using their [property name](#deep-properties).
+
+When `true`, inherited properties are not ignored, but not enumerable ones still
+are.
 
 # Support
 
