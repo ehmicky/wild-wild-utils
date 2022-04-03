@@ -57,8 +57,8 @@ Use a mapping function to modify any property matching the `query`.
 `options`: [`Options?`](#options)\
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
-Merge an object `value` with all object properties matching the `query`. If
-those properties are not objects, they are overridden instead. The merge is
+Merge an object `value` with each object property matching the `query`. If one
+of these properties is not object, it is overridden instead. The merge is
 shallow unless the [`deep`](#deep) option is `true`.
 
 ### push(target, query, values, options?)
@@ -69,8 +69,8 @@ shallow unless the [`deep`](#deep) option is `true`.
 `options`: [`Options?`](#options)\
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
 
-Concatenate an array of `values` with all array properties matching the `query`.
-If those properties are not arrays, they are overridden instead.
+Concatenate an array of `values` with each array property matching the `query`.
+If one of these properties is not an array, it is overridden instead.
 
 ### unshift(target, query, values, options?)
 
