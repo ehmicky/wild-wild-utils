@@ -57,9 +57,10 @@ Use a `mapFunction()` to modify any property matching the `query`.
 `options`: [`Options?`](#options)\
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
-Merge an object `value` with each object property matching the `query`. If one
-of these properties is not an object, it is overridden instead. The merge is
-shallow unless the [`deep`](#deep) option is `true`.
+Merge an object `value` with each object property matching the `query`.
+
+If one of these properties is not an object, it is overridden instead. The merge
+is shallow unless the [`deep`](#deep) option is `true`.
 
 ### push(target, query, values, options?)
 
@@ -67,9 +68,10 @@ shallow unless the [`deep`](#deep) option is `true`.
 `query`: [`Query`](https://github.com/ehmicky/wild-wild-path#queries)\
 `values`: `any[]`\
 `options`: [`Options?`](#options)\
-_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Concatenate an array of `values` with each array property matching the `query`.
+
 If one of these properties is not an array, it is overridden instead.
 
 ### unshift(target, query, values, options?)
@@ -91,8 +93,8 @@ beginning of each property instead of at the end.
 `options`: [`Options?`](#options)\
 _Return value_: `any`
 
-Return the first property that both matches the `query` and returns `true` with
-the `testFunction()`.
+Return the first property that matches the `query` and returns `true` with the
+`testFunction()`.
 
 ### pick(target, query, options?)
 
@@ -111,8 +113,8 @@ Return an object that includes only the properties matching the `query`.
 `options`: [`Options?`](#options)\
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
-Return an object that includes only the properties that both matches the `query`
-and returns `true` with the `testFunction()`.
+Return an object that includes only the properties that match the `query` and
+return `true` with the `testFunction()`.
 
 ### exclude(target, query, testFunction, options?)
 
@@ -122,7 +124,7 @@ and returns `true` with the `testFunction()`.
 `options`: [`Options?`](#options)\
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
-Remove any property that both matches the `query` and returns `true` with the
+Remove any property that matches the `query` and returns `true` with the
 `testFunction()`.
 
 ## Target
