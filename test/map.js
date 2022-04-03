@@ -71,9 +71,9 @@ testMutate('map', map, [
   },
 
   // `classes` and `inherited` options
-  { input: [getChild(), 'own', addOne], output: getChild() },
+  { input: [getChild(), '/own/', addOne], output: getChild() },
   {
-    input: [getChild(), 'own', addOne],
+    input: [getChild(), '/own/', addOne],
     opts: { classes: true, mutate: true },
     output: getChild({ own: 'own1' }),
   },

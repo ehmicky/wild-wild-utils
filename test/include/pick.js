@@ -25,8 +25,8 @@ testOutput('pick', pick, [
   },
 
   // `classes` and `inherited` options
-  { input: [child, 'own'], output: {} },
-  { input: [child, 'own', { classes: true }], output: { own: 'own' } },
+  { input: [child, '/own/'], output: {} },
+  { input: [child, '/own/', { classes: true }], output: { own: 'own' } },
   { input: [child, '/inherited/'], output: {} },
   { input: [child, '/inherited/', { classes: true }], output: {} },
   {

@@ -31,9 +31,9 @@ testMutate('exclude', exclude, [
   },
 
   // `classes` and `inherited` options
-  { input: [getChild(), 'own', returnTrue], output: getChild() },
+  { input: [getChild(), '/own/', returnTrue], output: getChild() },
   {
-    input: [getChild(), 'own', returnTrue],
+    input: [getChild(), '/own/', returnTrue],
     opts: { classes: true, mutate: true },
     output: getChild({ own: undefined }),
   },

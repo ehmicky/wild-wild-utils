@@ -34,8 +34,8 @@ testOutput('find', find, [
   { input: [{}, 'one', returnTrue, { entries: true }], output: undefined },
 
   // `classes` and `inherited` options
-  { input: [child, 'own', returnTrue], output: undefined },
-  { input: [child, 'own', returnTrue, { classes: true }], output: 'own' },
+  { input: [child, '/own/', returnTrue], output: undefined },
+  { input: [child, '/own/', returnTrue, { classes: true }], output: 'own' },
   { input: [child, '/inherited/', returnTrue], output: undefined },
   {
     input: [child, '/inherited/', returnTrue, { classes: true }],

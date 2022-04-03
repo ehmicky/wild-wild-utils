@@ -51,9 +51,9 @@ testOutput('include', include, [
   },
 
   // `classes` and `inherited` options
-  { input: [child, 'own', returnTrue], output: {} },
+  { input: [child, '/own/', returnTrue], output: {} },
   {
-    input: [child, 'own', returnTrue, { classes: true }],
+    input: [child, '/own/', returnTrue, { classes: true }],
     output: { own: 'own' },
   },
   { input: [child, '/inherited/', returnTrue], output: {} },

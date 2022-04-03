@@ -42,13 +42,13 @@ testMutate('push', push, [
 testOutput('push', push, [
   // `classes` option
   {
-    input: [getChild({ own: [1] }), 'own', [2], { mutate: true }],
-    output: { own: [2] },
+    input: [getChild({ own: [1] }), '/own/', [2], { mutate: true }],
+    output: getChild({ own: [1] }),
   },
   {
     input: [
       getChild({ own: [1] }),
-      'own',
+      '/own/',
       [2],
       { classes: true, mutate: true },
     ],
