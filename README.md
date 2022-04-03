@@ -7,6 +7,7 @@
 [![Medium](https://img.shields.io/badge/%E2%80%8B-medium-4cc61e.svg?logo=medium)](https://medium.com/@ehmicky)
 
 🤠 Functional utilities using object property paths with wildcards and regexps.
+🌵
 
 Available functional methods include:
 
