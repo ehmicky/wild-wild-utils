@@ -6,7 +6,7 @@
 
 🤠 Functional utilities using object property paths with wildcards and regexps.
 
-Available functional utilities include:
+Available functional methods include:
 
 - Mapping: [`map()`](#maptarget-query-mapfunction-options)
 - Merging/concatenating: [`merge()`](#mergetarget-query-value-options),
@@ -124,6 +124,20 @@ _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Remove any property that both match the query and return `true` with the
 `testFunction`.
+
+## Target
+
+The target value must be an object or an array. Additional documentation,
+notably about
+[`undefined` properties](https://github.com/ehmicky/wild-wild-path#undefined-values)
+can be found [here](https://github.com/ehmicky/wild-wild-path#target).
+
+## Query
+
+The query format is documented
+[here](https://github.com/ehmicky/wild-wild-path#queries). Both query
+[strings](https://github.com/ehmicky/wild-wild-path#query-strings) and
+[arrays](https://github.com/ehmicky/wild-wild-path#query-arrays) can be used.
 
 ## Options
 
