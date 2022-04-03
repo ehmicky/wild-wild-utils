@@ -150,7 +150,8 @@ _Methods_: \
 _Type_: `boolean`\
 _Default_: `false`
 
-By default, the [target](#target) is deeply cloned.\
+By default, the [target](https://github.com/ehmicky/wild-wild-path#target) is
+deeply cloned.\
 When `true`, it is directly mutated instead, which is faster but has side effects.
 
 ```js
@@ -171,9 +172,10 @@ By default, properties' values are returned.\
 When `true`, objects with the following shape are returned instead:
 
 - `value` `any`: property's value
-- `path` [`Path`](#paths): property's full path
+- `path` [`Path`](https://github.com/ehmicky/wild-wild-path#paths): property's
+  full path
 - `missing` `boolean`: whether the property is [missing](#missing) from the
-  [target](#target)
+  [target](https://github.com/ehmicky/wild-wild-path#target)
 
 ```js
 const target = { firstName: 'Alice', lastName: 'Smith' }
@@ -191,8 +193,9 @@ _Methods_: \
 _Type_: `boolean`\
 _Default_: `false` with `list|iterate()`, `true` with `set()`
 
-When `false`, properties [not defined in the target](#undefined-values) are
-ignored.
+When `false`, properties
+[not defined in the target](https://github.com/ehmicky/wild-wild-path#undefined-values)
+are ignored.
 
 ```js
 const target = {}
@@ -226,8 +229,9 @@ _Methods_: \
 _Type_: `boolean`\
 _Default_: `false`
 
-When using [unions](#unions) or [deep wildcards](#wildcards), a query might
-match both a property and some of its children.
+When using [unions](https://github.com/ehmicky/wild-wild-path#unions) or
+[deep wildcards](https://github.com/ehmicky/wild-wild-path#wildcards), a query
+might match both a property and some of its children.
 
 This option decides whether the returned properties should be sorted from
 children to parents, or the reverse.
@@ -244,8 +248,9 @@ _Methods_: \
 _Type_: `boolean`\
 _Default_: `false`
 
-When using [unions](#unions) or [deep wildcards](#wildcards), a query might
-match both a property and some of its children.
+When using [unions](https://github.com/ehmicky/wild-wild-path#unions) or
+[deep wildcards](https://github.com/ehmicky/wild-wild-path#wildcards), a query
+might match both a property and some of its children.
 
 When `true`, only leaves are matched. In other words, a matching property is
 ignored if one of its children also matches.
@@ -262,8 +267,9 @@ _Methods_: \
 _Type_: `boolean`\
 _Default_: `false`
 
-When using [unions](#unions) or [deep wildcards](#wildcards), a query might
-match both a property and some of its children.
+When using [unions](https://github.com/ehmicky/wild-wild-path#unions) or
+[deep wildcards](https://github.com/ehmicky/wild-wild-path#wildcards), a query
+might match both a property and some of its children.
 
 When `true`, only roots are matched. In other words, a matching property is
 ignored if one of its parents also matches.
@@ -295,12 +301,14 @@ _Methods_: all\
 _Type_: `boolean`\
 _Default_: `false`
 
-By default, [wildcards](#wildcards) and [regexps](#regexps) ignore properties
+By default, [wildcards](https://github.com/ehmicky/wild-wild-path#wildcards) and
+[regexps](https://github.com/ehmicky/wild-wild-path#regexps) ignore properties
 that are either
 [inherited](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 or
 [not enumerable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
-Those can still be matched by using their [property name](#deep-properties).
+Those can still be matched by using their
+[property name](https://github.com/ehmicky/wild-wild-path#deep-properties).
 
 When `true`, inherited properties are not ignored, but not enumerable ones still
 are.
