@@ -218,10 +218,7 @@ exclude(target, '**', (value) => typeof value === 'string')
 
 ## Target
 
-The target value must be an object or an array. Additional documentation,
-notably about
-[`undefined` properties](https://github.com/ehmicky/wild-wild-path#undefined-values),
-can be found [here](https://github.com/ehmicky/wild-wild-path#target).
+The target value must be an object or an array.
 
 ## Query
 
