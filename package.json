@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "deepmerge": "^4.2.2",
-    "wild-wild-parser": "^2.2.0",
+    "wild-wild-parser": "^2.3.0",
     "wild-wild-path": "^2.3.0"
   },
   "devDependencies": {
