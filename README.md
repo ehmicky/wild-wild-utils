@@ -8,8 +8,14 @@
 
 Available functional utilities include:
 
-- Mapping (`map()`, `merge()`, `push()`, `unshift()`)
-- Filtering (`find()`, `pick()`, `include()`, `exclude()`)
+- Mapping ([`map()`](#maptarget-query-mapfunction-options),
+  [`merge()`](#mergetarget-query-value-options),
+  [`push()`](#pushtarget-query-values-options),
+  [`unshift()`](#unshifttarget-query-values-options))
+- Filtering ([`find()`](#findtarget-query-testfunction-options),
+  [`pick()`](#picktarget-query-options),
+  [`include()`](#includetarget-query-testfunction-options),
+  [`exclude()`](#excludetarget-query-testfunction-options))
 
 Unlike similar libraries, object properties can be get/set using
 [dot-delimited paths](https://github.com/ehmicky/wild-wild-path#deep-properties),
