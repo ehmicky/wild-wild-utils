@@ -52,6 +52,12 @@ _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Use a `mapFunction()` to modify any property matching the `query`.
 
+```js
+const target = { user: { firstName: 'Alice', lastName: 'Smith' } }
+map(target, 'user.*', (userProp) => userProp.toLowerCase())
+// { user: { firstName: 'alice', lastName: 'smith' } }
+```
+
 ### merge(target, query, value, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
@@ -65,6 +71,18 @@ Merge an object `value` with each object property matching the `query`.
 If one of these properties is not an object, it is overridden instead. Merging
 is shallow unless the [`deep`](#deep) option is `true`.
 
+```js
+const target = {
+  userOne: { firstName: 'Alice', lastName: 'Smith' },
+  userTwo: { firstName: 'John', lastName: 'Doe' },
+}
+merge(target, '*', { age: 72, admin: true })
+// {
+//   userOne: { firstName: 'Alice', lastName: 'Smith', age: 72, admin: true },
+//   userTwo: { firstName: 'John', lastName: 'Doe', age: 72, admin: true },
+// }
+```
+
 ### push(target, query, values, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
@@ -77,6 +95,18 @@ Concatenate an array of `values` with each array property matching the `query`.
 
 If one of these properties is not an array, it is overridden instead.
 
+```js
+const target = {
+  userOne: { firstName: 'Alice', colors: ['red'] },
+  userTwo: { firstName: 'John', colors: ['blue'] },
+}
+push(target, '*.colors', ['yellow', 'silver'])
+// {
+//   userOne: { firstName: 'Alice', colors: ['red', 'yellow', 'silver'] },
+//   userTwo: { firstName: 'John', colors: ['blue', 'yellow', 'silver'] },
+// }
+```
+
 ### unshift(target, query, values, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
@@ -87,6 +117,18 @@ _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Like [`push()`](#pushtarget-query-values-options) but concatenates at the
 beginning of each property instead of at the end.
+
+```js
+const target = {
+  userOne: { firstName: 'Alice', colors: ['red'] },
+  userTwo: { firstName: 'John', colors: ['blue'] },
+}
+unshift(target, '*.colors', ['yellow', 'silver'])
+// {
+//   userOne: { firstName: 'Alice', colors: ['yellow', 'silver', 'red'] },
+//   userTwo: { firstName: 'John', colors: ['yellow', 'silver', 'blue'] },
+// }
+```
 
 ### find(target, query, testFunction, options?)
 
@@ -99,6 +141,14 @@ _Return value_: `any`
 Return the first property that matches the `query` and that returns `true` with
 the `testFunction()`.
 
+```js
+const target = {
+  userOne: { firstName: 'Alice', colors: ['red'] },
+  userTwo: { firstName: 'John', colors: ['blue'] },
+}
+find(target, '*.firstName', (firstName) => firstName !== 'John') // 'Alice'
+```
+
 ### pick(target, query, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
@@ -107,6 +157,18 @@ the `testFunction()`.
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Return an object that includes only the properties matching the `query`.
+
+```js
+const target = {
+  userOne: { firstName: 'Alice', lastName: 'Smith', age: 72, admin: true },
+  userTwo: { firstName: 'John', lastName: 'Doe', age: 72, admin: true },
+}
+pick(target, '*./Name/')
+// {
+//   userOne: { firstName: 'Alice', lastName: 'Smith' },
+//   userTwo: { firstName: 'John', lastName: 'Doe' },
+// }
+```
 
 ### include(target, query, testFunction, options?)
 
@@ -119,6 +181,18 @@ _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 Return an object that includes only the properties that match the `query` and
 that return `true` with the `testFunction()`.
 
+```js
+const target = {
+  userOne: { firstName: 'Alice', lastName: 'Smith', age: 72, admin: true },
+  userTwo: { firstName: 'John', lastName: 'Doe', age: 72, admin: true },
+}
+include(target, '**', (value) => typeof value === 'string')
+// {
+//   userOne: { firstName: 'Alice', lastName: 'Smith' },
+//   userTwo: { firstName: 'John', lastName: 'Doe' },
+// }
+```
+
 ### exclude(target, query, testFunction, options?)
 
 `target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
@@ -129,6 +203,18 @@ _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Remove any property that matches the `query` and that returns `true` with the
 `testFunction()`.
+
+```js
+const target = {
+  userOne: { firstName: 'Alice', lastName: 'Smith', age: 72, admin: true },
+  userTwo: { firstName: 'John', lastName: 'Doe', age: 72, admin: true },
+}
+exclude(target, '**', (value) => typeof value === 'string')
+// {
+//   userOne: { age: 72, admin: true },
+//   userTwo: { age: 72, admin: true },
+// }
+```
 
 ## Target
 
