@@ -162,9 +162,10 @@ When `true`, it is directly mutated instead, which is faster but has side effect
 
 ```js
 const target = { colors: ['red'] }
-console.log(push(target, 'colors', ['blue'])) // { colors: ['red', 'blue'] }
+console.log(push(target, 'colors', ['blue']))
+// { colors: ['red', 'blue'] }
 console.log(target) // { colors: ['red'] }
-console.log(set(target, 'name', 'Alice', { mutate: true }))
+console.log(push(target, 'colors', ['blue'], { mutate: true }))
 // { colors: ['red', 'blue'] }
 console.log(target) // { colors: ['red', 'blue'] }
 ```
@@ -178,8 +179,12 @@ _Methods_: [`map()`](#maptarget-query-mapfunction-options),
 _Type_: `boolean`\
 _Default_: `false`
 
-By default, properties' values are returned.\
-When `true`, objects with the following shape are returned instead:
+By default, properties' values are:
+
+- Passed as argument to `mapFunction()` and `testFunction()`
+- Returned by [`find()`](#findtarget-query-testfunction-options)
+
+When `true`, objects with the following shape are used instead:
 
 - `value` `any`: property's value
 - `path` [`Path`](https://github.com/ehmicky/wild-wild-path#paths): property's
@@ -238,7 +243,8 @@ of their names (not values).
 
 ```js
 const target = { user: { lastName: 'Doe', firstName: 'John', age: 72 } }
-pick(target, 'user./Name/') // { user: { lastName: 'Doe', firstName: 'John' } }
+pick(target, 'user./Name/')
+// { user: { lastName: 'Doe', firstName: 'John' } }
 pick(target, 'user./Name/', { sort: true })
 // { user: { firstName: 'John', lastName: 'Doe' } }
 ```
