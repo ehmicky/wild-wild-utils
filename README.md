@@ -8,12 +8,12 @@
 
 Available functional utilities include:
 
-- Mapping ([`map()`](#maptarget-query-mapfunction-options),
-  [`merge()`](#mergetarget-query-value-options),
+- Mapping ([`map()`](#maptarget-query-mapfunction-options))
+- Merging/concatenating ([`merge()`](#mergetarget-query-value-options),
   [`push()`](#pushtarget-query-values-options),
   [`unshift()`](#unshifttarget-query-values-options))
-- Filtering ([`find()`](#findtarget-query-testfunction-options),
-  [`pick()`](#picktarget-query-options),
+- Finding ([`find()`](#findtarget-query-testfunction-options))
+- Filtering ([`pick()`](#picktarget-query-options),
   [`include()`](#includetarget-query-testfunction-options),
   [`exclude()`](#excludetarget-query-testfunction-options))
 
