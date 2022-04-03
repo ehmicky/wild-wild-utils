@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/ehmicky/design/main/wild-wild-utils/wild-wild-utils.svg?sanitize=true" width="700"/>
+
 [![Codecov](https://img.shields.io/codecov/c/github/ehmicky/wild-wild-utils.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/wild-wild-utils)
 [![Build](https://github.com/ehmicky/wild-wild-utils/workflows/Build/badge.svg)](https://github.com/ehmicky/wild-wild-utils/actions)
 [![Node](https://img.shields.io/node/v/wild-wild-utils.svg?logo=node.js)](https://www.npmjs.com/package/wild-wild-utils)
