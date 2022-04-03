@@ -8,14 +8,14 @@
 
 Available functional utilities include:
 
-- Mapping ([`map()`](#maptarget-query-mapfunction-options))
-- Merging/concatenating ([`merge()`](#mergetarget-query-value-options),
+- Mapping: [`map()`](#maptarget-query-mapfunction-options)
+- Merging/concatenating: [`merge()`](#mergetarget-query-value-options),
   [`push()`](#pushtarget-query-values-options),
-  [`unshift()`](#unshifttarget-query-values-options))
-- Finding ([`find()`](#findtarget-query-testfunction-options))
-- Filtering ([`pick()`](#picktarget-query-options),
+  [`unshift()`](#unshifttarget-query-values-options)
+- Finding: [`find()`](#findtarget-query-testfunction-options)
+- Filtering: [`pick()`](#picktarget-query-options),
   [`include()`](#includetarget-query-testfunction-options),
-  [`exclude()`](#excludetarget-query-testfunction-options))
+  [`exclude()`](#excludetarget-query-testfunction-options)
 
 Unlike similar libraries, object properties can be get/set using
 [dot-delimited paths](https://github.com/ehmicky/wild-wild-path#deep-properties),
@@ -58,7 +58,8 @@ Use a mapping function to modify any property matching the `query`.
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Merge an object `value` with all object properties matching the `query`. If
-those properties are not objects, they are overridden instead.
+those properties are not objects, they are overridden instead. The merge is
+shallow unless the [`deep`](#deep) option is `true`.
 
 ### push(target, query, values, options?)
 
@@ -289,6 +290,14 @@ Those can still be matched by using their [property name](#deep-properties).
 
 When `true`, inherited properties are not ignored, but not enumerable ones still
 are.
+
+### deep
+
+_Methods_: [`merge()`](#mergetarget-query-value-options)\
+_Type_: `boolean`\
+_Default_: `false`
+
+Whether the merge should be shallow or deep.
 
 # Support
 
