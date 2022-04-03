@@ -268,7 +268,7 @@ children to parents, or the reverse.
 ```js
 const target = { user: { firstName: 'Alice', lastName: '' } }
 const isDefined = (value) => value !== ''
-find(target, 'user.**', isDefined) // { firstName: 'Alice' }
+find(target, 'user.**', isDefined) // { firstName: 'Alice', lastName: '' }
 find(target, 'user.**', isDefined, { childFirst: true }) // 'Alice'
 ```
 
@@ -291,9 +291,9 @@ ignored if one of its children also matches.
 
 ```js
 const target = { user: { firstName: 'Alice', lastName: 'Smith' } }
-merge(target, '**', { age: 72 })
+merge(target, '. user', { age: 72 })
 // { user: { firstName: 'Alice', lastName: 'Smith', age: 72 }, age: 72 }
-merge(target, '**', { age: 72 }, { leaves: true })
+merge(target, '. user', { age: 72 }, { leaves: true })
 // { user: { firstName: 'Alice', lastName: 'Smith', age: 72 } }
 ```
 
@@ -316,9 +316,9 @@ ignored if one of its parents also matches.
 
 ```js
 const target = { user: { firstName: 'Alice', lastName: 'Smith' } }
-merge(target, '**', { age: 72 })
+merge(target, '. user', { age: 72 })
 // { user: { firstName: 'Alice', lastName: 'Smith', age: 72 }, age: 72 }
-merge(target, '**', { age: 72 }, { roots: true })
+merge(target, '. user', { age: 72 }, { roots: true })
 // { user: { firstName: 'Alice', lastName: 'Smith' }, age: 72 }
 ```
 
