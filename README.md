@@ -62,7 +62,7 @@ _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Merge an object `value` with each object property matching the `query`.
 
-If one of these properties is not an object, it is overridden instead. The merge
+If one of these properties is not an object, it is overridden instead. Merging
 is shallow unless the [`deep`](#deep) option is `true`.
 
 ### push(target, query, values, options?)
@@ -96,8 +96,8 @@ beginning of each property instead of at the end.
 `options`: [`Options?`](#options)\
 _Return value_: `any`
 
-Return the first property that matches the `query` and returns `true` with the
-`testFunction()`.
+Return the first property that matches the `query` and that returns `true` with
+the `testFunction()`.
 
 ### pick(target, query, options?)
 
@@ -117,7 +117,7 @@ Return an object that includes only the properties matching the `query`.
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
 Return an object that includes only the properties that match the `query` and
-return `true` with the `testFunction()`.
+that return `true` with the `testFunction()`.
 
 ### exclude(target, query, testFunction, options?)
 
@@ -127,7 +127,7 @@ return `true` with the `testFunction()`.
 `options`: [`Options?`](#options)\
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
-Remove any property that matches the `query` and returns `true` with the
+Remove any property that matches the `query` and that returns `true` with the
 `testFunction()`.
 
 ## Target
@@ -184,7 +184,7 @@ _Default_: `false`
 
 By default, properties' values are:
 
-- Passed as argument to `mapFunction()` and `testFunction()`
+- Passed as argument to callbacks like `mapFunction()` and `testFunction()`
 - Returned by [`find()`](#findtarget-query-testfunction-options)
 
 When `true`, objects with the following shape are used instead:
