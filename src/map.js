@@ -67,7 +67,7 @@ const mapEntry = function ({
   classes,
   inherited,
 }) {
-  const value = get(target, path, { missing, classes, inherited })
+  const value = get(target, path, { classes, inherited })
   const entryA = entriesOpt ? { ...entry, value } : value
   const mappedValue = mapFunc(entryA)
   return value === mappedValue
