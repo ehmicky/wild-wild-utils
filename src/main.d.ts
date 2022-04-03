@@ -15,6 +15,24 @@ export function map<T extends Options>(
   mapFunction: T extends OptionsWithEntries ? MapEntry : MapValue,
   options?: T,
 ): Target
+export function merge(
+  target: Target,
+  query: Query,
+  value: object,
+  options?: MergeOptions,
+): Target
+export function push(
+  target: Target,
+  query: Query,
+  values: ReadonlyArray<any>,
+  options?: Options,
+): Target
+export function unshift(
+  target: Target,
+  query: Query,
+  values: ReadonlyArray<any>,
+  options?: Options,
+): Target
 export function find<T extends Options>(
   target: Target,
   query: Query,
@@ -33,22 +51,4 @@ export function exclude<T extends Options>(
   query: Query,
   testFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
   options?: T,
-): Target
-export function merge(
-  target: Target,
-  query: Query,
-  value: object,
-  options?: MergeOptions,
-): Target
-export function push(
-  target: Target,
-  query: Query,
-  values: readonly Array<any>,
-  options?: Options,
-): Target
-export function unshift(
-  target: Target,
-  query: Query,
-  values: readonly Array<any>,
-  options?: Options,
 ): Target
