@@ -11,12 +11,12 @@
 
 Available functional methods include:
 
-- Mapping: [`map()`](#maptarget-query-mapfunction-options)
-- Merging/concatenating: [`merge()`](#mergetarget-query-value-options),
+- 🗺️ Mapping: [`map()`](#maptarget-query-mapfunction-options)
+- 🚂 Merging/concatenating: [`merge()`](#mergetarget-query-value-options),
   [`push()`](#pushtarget-query-values-options),
   [`unshift()`](#unshifttarget-query-values-options)
-- Finding: [`find()`](#findtarget-query-testfunction-options)
-- Filtering: [`pick()`](#picktarget-query-options),
+- ⛏️ Finding: [`find()`](#findtarget-query-testfunction-options)
+- ⭐ Filtering: [`pick()`](#picktarget-query-options),
   [`include()`](#includetarget-query-testfunction-options),
   [`exclude()`](#excludetarget-query-testfunction-options)
 
