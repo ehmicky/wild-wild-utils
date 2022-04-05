@@ -169,7 +169,7 @@ find(target, '*.firstName', (firstName) => firstName !== 'John') // 'Alice'
 `options`: [`Options?`](#options)\
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
-Return an object that includes only the properties matching the `query`.
+Keep only the properties matching the `query`.
 
 ```js
 const target = {
@@ -191,8 +191,8 @@ pick(target, '*./Name/')
 `options`: [`Options?`](#options)\
 _Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
 
-Return an object that includes only the properties that match the `query` and
-that return `true` with the `testFunction()`.
+Keep only the properties that match the `query` and that return `true` with the
+`testFunction()`.
 
 ```js
 const target = {
