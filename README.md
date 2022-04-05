@@ -263,10 +263,12 @@ When `true`, it is directly mutated instead, which is faster but has side effect
 const target = { colors: ['red'] }
 console.log(push(target, 'colors', ['blue']))
 // { colors: ['red', 'blue'] }
-console.log(target) // { colors: ['red'] }
+console.log(target)
+// { colors: ['red'] }
 console.log(push(target, 'colors', ['blue'], { mutate: true }))
 // { colors: ['red', 'blue'] }
-console.log(target) // { colors: ['red', 'blue'] }
+console.log(target)
+// { colors: ['red', 'blue'] }
 ```
 
 ### entries
@@ -292,7 +294,7 @@ When `true`, objects with the following shape are used instead:
   [target](https://github.com/ehmicky/wild-wild-path#target)
 
 ```js
-const target = { firstName: 'Alice', lastName: 'Smith' }
+const target = { job: '', firstName: 'Alice', lastName: 'Smith' }
 find(target, '*', (value) => value !== '') // 'Alice'
 find(
   target,
@@ -386,11 +388,20 @@ When `true`, only leaves are matched. In other words, a matching property is
 ignored if one of its children also matches.
 
 ```js
-const target = { user: { firstName: 'Alice', lastName: 'Smith' } }
-merge(target, '. user', { age: 72 })
-// { user: { firstName: 'Alice', lastName: 'Smith', age: 72 }, age: 72 }
-merge(target, '. user', { age: 72 }, { leaves: true })
-// { user: { firstName: 'Alice', lastName: 'Smith', age: 72 } }
+const target = { user: { settings: { firstName: 'Alice', lastName: 'Smith' } } }
+merge(target, 'user user.settings', { age: 72 })
+// {
+//   user: {
+//     settings: { firstName: 'Alice', lastName: 'Smith', age: 72 },
+//     age: 72,
+//   }
+// }
+merge(target, 'user user.settings', { age: 72 }, { leaves: true })
+// {
+//   user: {
+//     settings: { firstName: 'Alice', lastName: 'Smith', age: 72 },
+//   }
+// }
 ```
 
 ### roots
@@ -411,11 +422,21 @@ When `true`, only roots are matched. In other words, a matching property is
 ignored if one of its parents also matches.
 
 ```js
-const target = { user: { firstName: 'Alice', lastName: 'Smith' } }
-merge(target, '. user', { age: 72 })
-// { user: { firstName: 'Alice', lastName: 'Smith', age: 72 }, age: 72 }
-merge(target, '. user', { age: 72 }, { roots: true })
-// { user: { firstName: 'Alice', lastName: 'Smith' }, age: 72 }
+const target = { user: { settings: { firstName: 'Alice', lastName: 'Smith' } } }
+merge(target, 'user user.settings', { age: 72 })
+// {
+//   user: {
+//     settings: { firstName: 'Alice', lastName: 'Smith', age: 72 },
+//     age: 72,
+//   }
+// }
+merge(target, 'user user.settings', { age: 72 }, { roots: true })
+// {
+//   user: {
+//     settings: { firstName: 'Alice', lastName: 'Smith' },
+//     age: 72,
+//   }
+// }
 ```
 
 ### classes
@@ -458,7 +479,7 @@ _Methods_: [`merge()`](#mergetarget-query-value-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
-Whether the merge should be shallow or deep.
+Whether merging should be shallow or deep.
 
 # Support
 
