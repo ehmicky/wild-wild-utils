@@ -1,6 +1,6 @@
 {
   "name": "wild-wild-utils",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "type": "module",
   "exports": "./build/src/main.js",
   "main": "./build/src/main.js",
