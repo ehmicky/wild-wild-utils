@@ -39,15 +39,15 @@ testMutate('merge', merge, [
   },
   {
     input: [
-      { one: { two: { three: 3 } } },
+      { one: { two: { three: 2 } } },
       'one',
-      { two: { four: 0 }, _merge: 'shallow' },
+      { two: { four: 1 }, _merge: 'shallow' },
     ],
-    output: { one: { two: { four: 0 } } },
+    output: { one: { two: { four: 1 } } },
   },
   {
     input: [
-      { one: { two: { three: 3 } } },
+      { one: { two: { three: 1 } } },
       'one',
       { two: { four: 0, _merge: 'delete' } },
     ],
