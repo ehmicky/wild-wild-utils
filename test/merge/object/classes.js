@@ -4,37 +4,31 @@ import { getChild } from '../../helpers/inherited.js'
 import { testOutput } from '../../helpers/output.js'
 
 testOutput('merge', merge, [
-  // `classes` option
-  ...[true, false].flatMap((deep) => [
-    {
-      input: [
-        getChild({ own: { one: 1 } }),
-        '/own/',
-        { two: 2 },
-        { mutate: true, deep },
-      ],
-      output: getChild({ own: { one: 1 } }),
-    },
-    {
-      input: [
-        getChild({ own: { one: 1 } }),
-        '/own/',
-        { two: 2 },
-        { classes: true, mutate: true, deep },
-      ],
-      output: getChild({ own: { one: 1, two: 2 } }),
-    },
-  ]),
-  ...[
-    { classes: false, output: { one: { two: getChild({ own: { six: 0 } }) } } },
-    { classes: true, output: { one: { two: { own: { three: 3, six: 0 } } } } },
-  ].map(({ classes, output }) => ({
+  {
+    input: [
+      getChild({ own: { one: 1 } }),
+      '/own/',
+      { two: 2 },
+      { mutate: true },
+    ],
+    output: getChild({ own: { one: 1 } }),
+  },
+  {
+    input: [
+      getChild({ own: { one: 1 } }),
+      '/own/',
+      { two: 2 },
+      { classes: true, mutate: true },
+    ],
+    output: getChild({ own: { one: 1, two: 2 } }),
+  },
+  ...[false, true].map((classes) => ({
     input: [
       { one: { two: { own: { three: 3 } } } },
       '/one/',
       { two: getChild({ own: { six: 0 } }) },
-      { classes, mutate: true, deep: true },
+      { classes, mutate: true },
     ],
-    output,
+    output: { one: { two: getChild({ own: { six: 0 } }) } },
   })),
 ])

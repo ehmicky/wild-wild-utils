@@ -1,41 +1,14 @@
-import deepmerge from 'deepmerge'
-import { isObject } from 'wild-wild-path'
-
-import { validateObject } from '../validate.js'
+import declarativeMerge from 'declarative-merge'
 
 import { mergeValues } from './common.js'
 
-// Only own properties are currently merged, even if `inherited` is `true`.
+// The `inherited`, `classes` and `mutate` options:
+//  - Impact which properties are selected and how they are set
+//  - But do not impact the merging logic itself, where those options are always
+//    considered `false`.
 // Non-enumerable properties are ignored.
-const mergeValue = function (value, newValue, { mutate, classes, deep }) {
-  validateObject(newValue, classes)
-  return deep
-    ? deepmerge(value, newValue, {
-        clone: !mutate,
-        isMergeableObject: boundIsMergeableObject.bind(undefined, classes),
-      })
-    : shallowMergeValue({ value, newValue, mutate, classes })
-}
-
-const boundIsMergeableObject = function (classes, value) {
-  return isObject(value, classes) || Array.isArray(value)
-}
-
-// Unless `deep` is true, merging is shallow
-const shallowMergeValue = function ({ value, newValue, mutate, classes }) {
-  if (!isObject(value, classes)) {
-    return newValue
-  }
-
-  if (!mutate) {
-    return { ...value, ...newValue }
-  }
-
-  Object.keys(newValue).forEach((key) => {
-    // eslint-disable-next-line no-param-reassign, fp/no-mutation
-    value[key] = newValue[key]
-  })
-  return value
+const mergeValue = function (value, newValue) {
+  return declarativeMerge(value, newValue)
 }
 
 // Merge object values
