@@ -518,6 +518,17 @@ Those can still be matched by using their
 When `true`, inherited properties are not ignored, but not enumerable ones still
 are.
 
+# Related projects
+
+- [`wild-wild-path`](https://github.com/ehmicky/wild-wild-path): object property
+  paths used by `wild-wild-utils`
+- [`wild-wild-parser`](https://github.com/ehmicky/wild-wild-parser): parser for
+  `wild-wild-path`'s object property paths
+- [`declarative-merge`](https://github.com/ehmicky/declarative-merge): object
+  merging logic used by the [`merge()` method](#mergetarget-query-value-option)
+- [`set-array`](https://github.com/ehmicky/set-array): array update logic used
+  by the [`merge()` method](#mergetarget-query-value-option)
+
 # Support
 
 For any question, _don't hesitate_ to [submit an issue on GitHub](../../issues).
