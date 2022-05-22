@@ -1,9 +1,4 @@
-import type {
-  Target,
-  Query,
-  Entry,
-  Options as BaseOptions,
-} from 'wild-wild-path'
+import type { Target, Query, Entry, Options } from 'wild-wild-path'
 
 type Value = Entry['value']
 type MapValue = (value: Value) => Value
@@ -11,12 +6,6 @@ type MapEntry = (entry: Entry) => Entry
 type TestValue = (value: Value) => boolean
 type TestEntry = (entry: Entry) => boolean
 
-export type Options = BaseOptions & {
-  /**
-   * Whether merging should be shallow or deep.
-   */
-  readonly deep: true
-}
 type OptionsWithEntries = Options & { entries: true }
 
 /**
@@ -70,7 +59,7 @@ export function map<T extends Options>(
 export function merge(
   target: Target,
   query: Query,
-  value: object,
+  value: any,
   options?: Options,
 ): Target
 

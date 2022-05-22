@@ -7,12 +7,9 @@ import {
   merge,
   push,
   unshift,
-  MergeOptions,
 } from 'wild-wild-utils'
 import type { Target, Entry } from 'wild-wild-path'
 import { expectType, expectNotType, expectError } from 'tsd'
-
-const mergeOptions: MergeOptions = { deep: true, sort: false }
 
 const mapValue = (value: any): any => value
 const mapEntry = (entry: Entry): Entry => entry
@@ -61,10 +58,9 @@ expectError(exclude({}, 'prop', testEntry, true))
 
 expectType<Target>(merge({}, 'prop', { one: 1 }))
 merge({}, ['prop'], { one: 1 })
-merge({}, 'prop', { one: 1 }, { deep: true })
+merge({}, 'prop', true)
 expectError(merge(true, 'prop', { one: 1 }))
 expectError(merge({}, true, { one: 1 }))
-expectError(merge({}, 'prop', true))
 expectError(merge({}, 'prop', { one: 1 }, true))
 
 expectType<Target>(push({}, 'prop', [1]))
