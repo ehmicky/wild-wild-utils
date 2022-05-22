@@ -4,13 +4,17 @@ import { testMutate } from '../../helpers/mutate.js'
 import { testValidation } from '../../helpers/validate.js'
 
 testMutate('merge', merge, [
-  // Merge logic
+  // Setting values
   { input: [{ one: { two: 2 } }, 'one', 3], output: { one: 3 } },
   { input: [{ one: 3 }, 'one', { two: 2 }], output: { one: { two: 2 } } },
+
+  // Merging values
   {
     input: [{ one: { two: 2 } }, 'one', { three: 3 }],
     output: { one: { two: 2, three: 3 } },
   },
+
+  // Overriding values
   {
     input: [{ one: { two: 2 } }, 'one', { two: 3 }],
     output: { one: { two: 3 } },
@@ -19,6 +23,8 @@ testMutate('merge', merge, [
     input: [{ one: 2 }, 'one', { two: 3 }],
     output: { one: { two: 3 } },
   },
+
+  // Merge modes
   {
     input: [{ one: { two: { three: 3 } } }, 'one', { two: { four: 0 } }],
     output: { one: { two: { three: 3, four: 0 } } },
@@ -47,6 +53,8 @@ testMutate('merge', merge, [
     ],
     output: { one: {} },
   },
+
+  // Array merge
   {
     input: [{ one: { two: [{}] } }, 'one', { two: { 0: { three: 1 } } }],
     output: { one: { two: [{ three: 1 }] } },
