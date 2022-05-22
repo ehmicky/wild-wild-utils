@@ -26,32 +26,75 @@ export function map<T extends Options>(
 ): Target
 
 /**
- * Merge an object `value` with each object property matching the `query`.
+ * Deeply merge an object `value` with each object property matching the `query`.
+ *
  * If one of these properties is not an object, it is overridden instead.
- * Merging is shallow unless the `deep` option is `true`.
+ *
+ * [Any object in `value` can change](https://github.com/ehmicky/declarative-merge#nesting)
+ * the merge mode using a `_merge` property with value
+ * [`"deep"`](https://github.com/ehmicky/declarative-merge#deep-merge) (default),
+ * [`"shallow"`](https://github.com/ehmicky/declarative-merge#shallow-merge),
+ * [`"set"`](https://github.com/ehmicky/declarative-merge#no-merge) or
+ * [`"delete"`](https://github.com/ehmicky/declarative-merge#delete).
+ *
+ * Arrays
+ * [can be merged using objects in `value`](https://github.com/ehmicky/declarative-merge#arrays)
+ * where the keys are the
+ * [array indices](https://github.com/ehmicky/declarative-merge#update). Items can
+ * be [updated](https://github.com/ehmicky/declarative-merge#update),
+ * [merged](https://github.com/ehmicky/declarative-merge#merge),
+ * [added](https://github.com/ehmicky/declarative-merge#add),
+ * [inserted](https://github.com/ehmicky/declarative-merge#insert),
+ * [appended](https://github.com/ehmicky/declarative-merge#append),
+ * [prepended](https://github.com/ehmicky/declarative-merge#prepend) or
+ * [deleted](https://github.com/ehmicky/declarative-merge#delete-1).
  *
  * @example
  * ```js
  * const target = {
- *   userOne: { firstName: 'Alice', settings: { deleted: true } },
- *   userTwo: { firstName: 'John', settings: { deleted: false } },
+ *   userOne: { names: ['Alice', 'Smith'], settings: { deleted: true } },
+ *   userTwo: { names: ['John', 'Doe'], settings: { deleted: false } },
  * }
+ *
  * merge(target, '*', { age: 72, settings: { admin: true } })
  * // {
- * //   userOne: { firstName: 'Alice', age: 72, settings: { admin: true } },
- * //   userTwo: { firstName: 'John', age: 72, settings: { admin: true } },
- * // }
- * merge(target, '*', { age: 72, settings: { admin: true } }, { deep: true })
- * // {
  * //   userOne: {
- * //     firstName: 'Alice',
- * //     age: 72,
+ * //     names: ['Alice', 'Smith'],
  * //     settings: { deleted: true, admin: true },
+ * //     age: 72,
  * //   },
  * //   userTwo: {
- * //     firstName: 'John',
- * //     age: 72,
+ * //     names: ['John', 'Doe'],
  * //     settings: { deleted: false, admin: true },
+ * //     age: 72,
+ * //   },
+ * // }
+ *
+ * merge(target, '*', { age: 72, settings: { admin: true }, _merge: 'shallow' })
+ * // {
+ * //   userOne: {
+ * //     names: [ 'Alice', 'Smith' ],
+ * //     settings: { admin: true },
+ * //     age: 72,
+ * //   },
+ * //   userTwo: {
+ * //     names: [ 'John', 'Doe' ],
+ * //     settings: { admin: true },
+ * //     age: 72,
+ * //   },
+ * // }
+ *
+ * merge(target, '*', { names: { 1: 'Red' } })
+ * // {
+ * //   userOne: {
+ * //     names: ['Alice', 'Red'],
+ * //     settings: { deleted: true, admin: true },
+ * //     age: 72,
+ * //   },
+ * //   userTwo: {
+ * //     names: ['John', 'Red'],
+ * //     settings: { deleted: false, admin: true },
+ * //     age: 72,
  * //   },
  * // }
  * ```
