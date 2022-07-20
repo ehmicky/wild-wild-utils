@@ -1,3 +1,6 @@
+import type { Target, Entry } from 'wild-wild-path'
+import { expectType, expectNotType, expectError } from 'tsd'
+
 import {
   map,
   find,
@@ -7,9 +10,7 @@ import {
   merge,
   push,
   unshift,
-} from 'wild-wild-utils'
-import type { Target, Entry } from 'wild-wild-path'
-import { expectType, expectNotType, expectError } from 'tsd'
+} from './main.js'
 
 const mapValue = (value: any): any => value
 const mapEntry = (entry: Entry): Entry => entry
