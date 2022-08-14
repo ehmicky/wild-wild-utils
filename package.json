@@ -46,7 +46,7 @@
     "test": "test"
   },
   "dependencies": {
-    "declarative-merge": "^2.0.0",
+    "declarative-merge": "^2.1.0",
     "wild-wild-parser": "^3.0.1",
     "wild-wild-path": "^3.0.0"
   },
