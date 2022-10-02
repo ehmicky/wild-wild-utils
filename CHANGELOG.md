@@ -1,3 +1,9 @@
+# 4.2.0
+
+## Features
+
+- Reduce npm package size by 67%, from ~1290KB to ~432KB
+
 # 4.1.0
 
 ## Features
