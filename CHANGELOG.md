@@ -2,13 +2,13 @@
 
 ## Features
 
-- Reduce npm package size
+- Reduce npm package size by 56%, from 432kB to 192kB
 
 # 4.2.0
 
 ## Features
 
-- Reduce npm package size by 67%, from ~1290KB to ~432KB
+- Reduce npm package size by 67%, from ~1290kB to ~432kB
 
 # 4.1.0
 
