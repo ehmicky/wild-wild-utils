@@ -17,16 +17,16 @@ testOutput('pick', pick, [
     output: { one: { two: 2, three: 3 } },
   },
 
+  // `shallowArrays` option
+  { input: [{ one: [1] }, 'one.*'], output: { one: [1] } },
+  { input: [{ one: [1] }, 'one.*', { shallowArrays: true }], output: {} },
+
   // `sort` option
   { input: [{ two: 2, one: 1 }, 'one two'], output: { two: 2, one: 1 } },
   {
     input: [{ two: 2, one: 1 }, 'one two', { sort: true }],
     output: { one: 1, two: 2 },
   },
-
-  // `shallowArrays` option
-  { input: [{ one: [1] }, 'one.*'], output: { one: [1] } },
-  { input: [{ one: [1] }, 'one.*', { shallowArrays: true }], output: {} },
 
   // `classes` and `inherited` options
   { input: [child, '/own/'], output: {} },

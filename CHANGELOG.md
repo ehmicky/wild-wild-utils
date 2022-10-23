@@ -1,3 +1,10 @@
+# 4.4.0
+
+## Features
+
+- Add [`shallowArrays` option](README.md#shallowarrays), which prevents
+  recursing on arrays
+
 # 4.3.0
 
 ## Features

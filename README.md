@@ -481,6 +481,26 @@ merge(target, 'user user.settings', { age: 72 }, { roots: true })
 // }
 ```
 
+### shallowArrays
+
+_Methods_: all\
+_Type_: `boolean`\
+_Default_: `false`
+
+If `true`, [wildcards](https://github.com/ehmicky/wild-wild-path#-wildcards) do
+not recurse on arrays. Array items can still be matched by using
+[indices](https://github.com/ehmicky/wild-wild-path#-arrays-indices) or
+[slices](https://github.com/ehmicky/wild-wild-path#%EF%B8%8F-array-slices).
+
+```js
+const target = { colors: ['red', 'blue'] }
+const getPath = (entry) => entry.path
+map(target, '**', getPath, { leaves: true, entries: true })
+// { colors: [['colors', 0], ['colors', 1]] }
+map(target, '**', getPath, { leaves: true, entries: true, shallowArrays: true })
+// { colors: ['colors'] }
+```
+
 ### classes
 
 _Methods_: all\
