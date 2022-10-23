@@ -240,3 +240,16 @@ export function exclude<T extends Options>(
   testFunction: T extends OptionsWithEntries ? TestEntry : TestValue,
   options?: T,
 ): Target
+
+/**
+ * Flatten deep properties to shallow properties with
+ * [dot-delimited paths](https://github.com/ehmicky/wild-wild-path#paths).
+ *
+ * @example
+ * ```js
+ * const target = { user: { firstName: 'Bob', colors: ['red', 'blue'] } }
+ * flatten(target)
+ * // { 'user.firstName': 'Bob', 'user.colors.0': 'red', 'user.colors.1': 'blue' }
+ * ```
+ */
+export function flatten(target: Target, options?: Options): object

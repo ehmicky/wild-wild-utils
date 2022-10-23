@@ -10,6 +10,7 @@ import {
   merge,
   push,
   unshift,
+  flatten,
 } from './main.js'
 
 const mapValue = (value: any): any => value
@@ -79,3 +80,9 @@ expectError(unshift(true, 'prop', [1]))
 expectError(unshift({}, true, [1]))
 expectError(unshift({}, 'prop', true))
 expectError(unshift({}, 'prop', [1], true))
+
+expectType<object>(flatten({}))
+expectType<object>(flatten([]))
+flatten({}, { shallowArrays: true })
+expectError(flatten(true))
+expectError(flatten({}, true))
