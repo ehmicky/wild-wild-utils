@@ -403,10 +403,10 @@ of their names (not values).
 
 ```js
 const target = { user: { lastName: 'Doe', firstName: 'John', age: 72 } }
-pick(target, 'user./Name/')
-// { user: { lastName: 'Doe', firstName: 'John' } }
-pick(target, 'user./Name/', { sort: true })
-// { user: { firstName: 'John', lastName: 'Doe' } }
+flatten(target)
+// { 'user.lastName': 'Doe', 'user.firstName': 'John', 'user.age': 72 }
+flatten(target, { sort: true })
+// { 'user.age': 72, 'user.firstName': 'John', 'user.lastName': 'Doe' }
 ```
 
 ### childFirst
