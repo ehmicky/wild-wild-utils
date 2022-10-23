@@ -1,3 +1,10 @@
+# 4.6.0
+
+## Features
+
+- Add support for [`sort` option](README.md#sort) with
+  [`flatten()` method](README.md#flattentarget-options)
+
 # 4.5.0
 
 ## Features

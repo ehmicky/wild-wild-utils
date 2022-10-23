@@ -393,7 +393,8 @@ map(target, 'name', ({ value = 'defaultName' }) => value, {
 
 _Methods_: [`find()`](#findtarget-query-testfunction-options),
 [`pick()`](#picktarget-query-options),
-[`include()`](#includetarget-query-testfunction-options)\
+[`include()`](#includetarget-query-testfunction-options),\
+[`flatten()`](#flattentarget-options)\
 _Type_: `boolean`\
 _Default_: `false`
 
