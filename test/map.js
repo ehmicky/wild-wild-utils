@@ -70,6 +70,10 @@ testMutate('map', map, [
     output: { one: 1, two: 1 },
   },
 
+  // `shallowArrays` option
+  { input: [[1], '*', addOne], output: [2] },
+  { input: [[1], '*', addOne, { shallowArrays: true }], output: [1] },
+
   // `classes` and `inherited` options
   { input: [getChild(), '/own/', addOne], output: getChild() },
   {

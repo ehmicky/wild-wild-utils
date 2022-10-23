@@ -30,6 +30,13 @@ testMutate('exclude', exclude, [
     output: { one: 1 },
   },
 
+  // `shallowArrays` option
+  { input: [{ one: [1] }, 'one.*', returnTrue], output: { one: [] } },
+  {
+    input: [{ one: [1] }, 'one.*', returnTrue, { shallowArrays: true }],
+    output: { one: [1] },
+  },
+
   // `classes` and `inherited` options
   { input: [getChild(), '/own/', returnTrue], output: getChild() },
   {

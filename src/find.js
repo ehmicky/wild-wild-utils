@@ -8,7 +8,16 @@ export const find = function (
   target,
   query,
   condition,
-  { childFirst, roots, leaves, sort, entries, classes, inherited } = {},
+  {
+    childFirst,
+    roots,
+    leaves,
+    sort,
+    entries,
+    shallowArrays,
+    classes,
+    inherited,
+  } = {},
 ) {
   validateFunction(condition)
 
@@ -20,6 +29,7 @@ export const find = function (
     sort,
     missing: false,
     entries,
+    shallowArrays,
     classes,
     inherited,
   })) {

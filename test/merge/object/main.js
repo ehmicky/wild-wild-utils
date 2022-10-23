@@ -86,6 +86,13 @@ testMutate('merge', merge, [
     opts: { roots: true },
     output: { one: { two: { three: 3 }, four: 0 } },
   },
+
+  // `shallowArrays` option
+  { input: [[{ one: 1 }], '*', { two: 2 }], output: [{ one: 1, two: 2 }] },
+  {
+    input: [[{ one: 1 }], '*', { two: 2 }, { shallowArrays: true }],
+    output: [{ one: 1 }],
+  },
 ])
 
 testValidation('merge', merge, [

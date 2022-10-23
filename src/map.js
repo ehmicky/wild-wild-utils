@@ -25,6 +25,7 @@ export const map = function (
     leaves,
     missing,
     entries: entriesOpt,
+    shallowArrays,
     classes,
     inherited,
   } = {},
@@ -37,6 +38,7 @@ export const map = function (
     sort: false,
     missing,
     entries: true,
+    shallowArrays,
     classes,
     inherited,
   })
@@ -49,6 +51,7 @@ export const map = function (
         mutate,
         missing,
         entriesOpt,
+        shallowArrays,
         classes,
         inherited,
       }),
@@ -64,13 +67,20 @@ const mapEntry = function ({
   mutate,
   missing,
   entriesOpt,
+  shallowArrays,
   classes,
   inherited,
 }) {
-  const value = get(target, path, { classes, inherited })
+  const value = get(target, path, { shallowArrays, classes, inherited })
   const entryA = entriesOpt ? { ...entry, value } : value
   const mappedValue = mapFunc(entryA)
   return value === mappedValue
     ? target
-    : set(target, path, mappedValue, { mutate, missing, classes, inherited })
+    : set(target, path, mappedValue, {
+        mutate,
+        missing,
+        shallowArrays,
+        classes,
+        inherited,
+      })
 }

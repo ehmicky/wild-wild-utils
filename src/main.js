@@ -1,5 +1,7 @@
 export { find } from './find.js'
-export { pick, include, exclude } from './include/main.js'
+export { pick } from './include/pick.js'
+export { include } from './include/include.js'
+export { exclude } from './include/exclude.js'
 export { map } from './map.js'
 export { push, unshift } from './merge/array.js'
 export { merge } from './merge/object.js'

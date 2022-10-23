@@ -37,6 +37,10 @@ testMutate('push', push, [
     opts: { missing: false },
     output: { one: [1] },
   },
+
+  // `shallowArrays` option
+  { input: [[[1]], '*', [2]], output: [[1, 2]] },
+  { input: [[[1]], '*', [2], { shallowArrays: true }], output: [[1]] },
 ])
 
 testOutput('push', push, [

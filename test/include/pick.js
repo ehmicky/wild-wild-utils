@@ -24,6 +24,10 @@ testOutput('pick', pick, [
     output: { one: 1, two: 2 },
   },
 
+  // `shallowArrays` option
+  { input: [{ one: [1] }, 'one.*'], output: { one: [1] } },
+  { input: [{ one: [1] }, 'one.*', { shallowArrays: true }], output: {} },
+
   // `classes` and `inherited` options
   { input: [child, '/own/'], output: {} },
   { input: [child, '/own/', { classes: true }], output: { own: 'own' } },

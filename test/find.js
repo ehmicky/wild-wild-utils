@@ -33,6 +33,10 @@ testOutput('find', find, [
   },
   { input: [{}, 'one', returnTrue, { entries: true }], output: undefined },
 
+  // `shallowArrays` option
+  { input: [[1], '*', returnTrue], output: 1 },
+  { input: [[1], '*', returnTrue, { shallowArrays: true }], output: undefined },
+
   // `classes` and `inherited` options
   { input: [child, '/own/', returnTrue], output: undefined },
   { input: [child, '/own/', returnTrue, { classes: true }], output: 'own' },

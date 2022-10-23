@@ -50,6 +50,13 @@ testOutput('include', include, [
     output: { one: 1, two: 2 },
   },
 
+  // `shallowArrays` option
+  { input: [{ one: [1] }, 'one.*', returnTrue], output: { one: [1] } },
+  {
+    input: [{ one: [1] }, 'one.*', returnTrue, { shallowArrays: true }],
+    output: {},
+  },
+
   // `classes` and `inherited` options
   { input: [child, '/own/', returnTrue], output: {} },
   {
