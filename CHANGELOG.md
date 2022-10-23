@@ -1,9 +1,16 @@
+# 4.5.0
+
+## Features
+
+- Add [`flatten()` method](README.md#flattentarget-options) which flattens deep
+  properties to shallow properties with dot-delimited paths
+
 # 4.4.0
 
 ## Features
 
-- Add [`shallowArrays` option](README.md#shallowarrays), which prevents
-  recursing on arrays
+- Add [`shallowArrays` option](README.md#shallowarrays) which prevents recursing
+  on arrays
 
 # 4.3.0
 
