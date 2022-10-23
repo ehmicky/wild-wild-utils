@@ -11,7 +11,8 @@
 
 Available functional methods include:
 
-- 🗺️ Mapping: [`map()`](#maptarget-query-mapfunction-options)
+- 🗺️ Mapping: [`map()`](#maptarget-query-mapfunction-options),
+  [`flatten()`](#flattentarget-options)
 - 🚂 Merging/concatenating: [`merge()`](#mergetarget-query-value-options),
   [`push()`](#pushtarget-query-values-options),
   [`unshift()`](#unshifttarget-query-values-options)
