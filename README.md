@@ -271,6 +271,21 @@ exclude(target, '**', (value) => typeof value === 'string')
 // }
 ```
 
+### flatten(target, options?)
+
+`target`: [`Target`](https://github.com/ehmicky/wild-wild-path#target)\
+`options`: [`Options?`](#options)\
+_Return value_: [`Target`](https://github.com/ehmicky/wild-wild-path#target)
+
+Flatten deep properties to shallow properties with
+[dot-delimited paths](https://github.com/ehmicky/wild-wild-path#paths).
+
+```js
+const target = { user: { firstName: 'Bob', colors: ['red', 'blue'] } }
+flatten(target)
+// { 'user.firstName': 'Bob', 'user.colors.0': 'red', 'user.colors.1': 'blue' }
+```
+
 ## Target
 
 The target value must be an object or an array.
@@ -493,12 +508,11 @@ not recurse on arrays. Array items can still be matched by using
 [slices](https://github.com/ehmicky/wild-wild-path#%EF%B8%8F-array-slices).
 
 ```js
-const target = { colors: ['red', 'blue'] }
-const getPath = (entry) => entry.path
-map(target, '**', getPath, { leaves: true, entries: true })
-// { colors: [['colors', 0], ['colors', 1]] }
-map(target, '**', getPath, { leaves: true, entries: true, shallowArrays: true })
-// { colors: ['colors'] }
+const target = { user: { firstName: 'Bob', colors: ['red', 'blue'] } }
+flatten(target)
+// { 'user.firstName': 'Bob', 'user.colors.0': 'red', 'user.colors.1': 'blue' }
+flatten(target, { shallowArrays: true })
+// { 'user.firstName': 'Bob', 'user.colors': ['red', 'blue'] }
 ```
 
 ### classes
