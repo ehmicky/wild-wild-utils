@@ -1,7 +1,7 @@
 <img alt="wild-wild-utils logo" src="https://raw.githubusercontent.com/ehmicky/design/main/wild-wild-utils/wild-wild-utils.svg?sanitize=true" width="700"/>
 
 [![Codecov](https://img.shields.io/codecov/c/github/ehmicky/wild-wild-utils.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/wild-wild-utils)
-[![TypeScript](https://img.shields.io/badge/-typed-brightgreen?logo=typescript&colorA=gray&logoColor=0096ff)](/src/main.d.ts)
+[![TypeScript](https://img.shields.io/badge/-typed-brightgreen?logo=typescript&colorA=gray&logoColor=0096ff)](/types/main.d.ts)
 [![Node](https://img.shields.io/node/v/wild-wild-utils.svg?logo=node.js&logoColor=66cc33)](https://www.npmjs.com/package/wild-wild-utils)
 [![Twitter](https://img.shields.io/badge/%E2%80%8B-twitter-brightgreen.svg?logo=twitter)](https://twitter.com/intent/follow?screen_name=ehmicky)
 [![Medium](https://img.shields.io/badge/%E2%80%8B-medium-brightgreen.svg?logo=medium)](https://medium.com/@ehmicky)
