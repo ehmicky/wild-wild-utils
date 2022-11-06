@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "declarative-merge": "^2.3.0",
-    "wild-wild-parser": "^3.2.0",
+    "wild-wild-parser": "^3.3.0",
     "wild-wild-path": "^3.3.0"
   },
   "devDependencies": {
