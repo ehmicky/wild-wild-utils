@@ -130,12 +130,12 @@ merge(target, '*', { names: { 1: 'Red' } })
 // {
 //   userOne: {
 //     names: ['Alice', 'Red'],
-//     settings: { deleted: true, admin: true },
+//     settings: { deleted: true },
 //     age: 72,
 //   },
 //   userTwo: {
 //     names: ['John', 'Red'],
-//     settings: { deleted: false, admin: true },
+//     settings: { deleted: false },
 //     age: 72,
 //   },
 // }
