@@ -11,7 +11,7 @@ import {
   push,
   unshift,
   flatten,
-} from './main.js'
+} from 'wild-wild-utils'
 
 const mapValue = (value: any): any => value
 const mapEntry = (entry: Entry): Entry => entry
