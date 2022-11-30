@@ -1,9 +1,9 @@
 import { map } from 'wild-wild-utils'
 
-import { identity } from './helpers/functions.js'
-import { getChild } from './helpers/inherited.js'
-import { testMutate } from './helpers/mutate.js'
-import { testValidation } from './helpers/validate.js'
+import { identity } from './helpers/functions.test.js'
+import { getChild } from './helpers/inherited.test.js'
+import { testMutate } from './helpers/mutate.test.js'
+import { testValidation } from './helpers/validate.test.js'
 
 const addOne = function (value) {
   return value + 1

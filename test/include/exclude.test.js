@@ -6,10 +6,10 @@ import {
   isOne,
   isNotOne,
   isNamedTwo,
-} from '../helpers/functions.js'
-import { getChild } from '../helpers/inherited.js'
-import { testMutate } from '../helpers/mutate.js'
-import { testValidation } from '../helpers/validate.js'
+} from '../helpers/functions.test.js'
+import { getChild } from '../helpers/inherited.test.js'
+import { testMutate } from '../helpers/mutate.test.js'
+import { testValidation } from '../helpers/validate.test.js'
 
 testMutate('exclude', exclude, [
   // Main usage

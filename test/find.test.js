@@ -1,9 +1,9 @@
 import { find } from 'wild-wild-utils'
 
-import { returnTrue, isOne } from './helpers/functions.js'
-import { getChild } from './helpers/inherited.js'
-import { testOutput } from './helpers/output.js'
-import { testValidation } from './helpers/validate.js'
+import { returnTrue, isOne } from './helpers/functions.test.js'
+import { getChild } from './helpers/inherited.test.js'
+import { testOutput } from './helpers/output.test.js'
+import { testValidation } from './helpers/validate.test.js'
 
 const child = getChild()
 

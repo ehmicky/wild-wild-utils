@@ -1,9 +1,9 @@
 import { push, unshift } from 'wild-wild-utils'
 
-import { getChild } from '../helpers/inherited.js'
-import { testMutate } from '../helpers/mutate.js'
-import { testOutput } from '../helpers/output.js'
-import { testValidation } from '../helpers/validate.js'
+import { getChild } from '../helpers/inherited.test.js'
+import { testMutate } from '../helpers/mutate.test.js'
+import { testOutput } from '../helpers/output.test.js'
+import { testValidation } from '../helpers/validate.test.js'
 
 testMutate('unshift', unshift, [
   { input: [{ one: [1] }, 'one', [2]], output: { one: [2, 1] } },
