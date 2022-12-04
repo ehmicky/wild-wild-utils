@@ -1,6 +1,6 @@
 import declarativeMerge from 'declarative-merge'
 
-import { mergeValues } from '../common.js'
+import { mergeValues } from './common.js'
 
 // The `inherited`, `classes` and `mutate` options:
 //  - Impact which properties are selected and how they are set
