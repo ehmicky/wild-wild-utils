@@ -1,9 +1,13 @@
 import type { Target, Query, Entry, Options } from 'wild-wild-path'
 
 type Value = Entry['value']
+
 type MapValue = (value: Value) => Value
+
 type MapEntry = (entry: Entry) => Entry
+
 type TestValue = (value: Value) => boolean
+
 type TestEntry = (entry: Entry) => boolean
 
 type OptionsWithEntries = Options & { entries: true }
