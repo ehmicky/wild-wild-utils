@@ -13,9 +13,9 @@ import {
   flatten,
 } from 'wild-wild-utils'
 
-const mapValue = (value: any): any => value
+const mapValue = (value: unknown): unknown => value
 const mapEntry = (entry: Entry): Entry => entry
-const testValue = (value: any): boolean => true
+const testValue = (value: unknown): boolean => true
 const testEntry = (entry: Entry): boolean => true
 
 expectType<Target>(map({}, 'prop', mapValue))
@@ -30,7 +30,7 @@ map({}, 'prop', true)
 // @ts-expect-error
 map({}, 'prop', mapEntry, true)
 
-expectType<any>(find({}, 'prop', testValue))
+expectType<unknown>(find({}, 'prop', testValue))
 expectType<Entry>(find({}, 'prop', testEntry, { entries: true }))
 expectNotType<Entry>(find({}, 'prop', testEntry, { entries: false }))
 find({}, ['prop'], testValue)

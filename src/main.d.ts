@@ -106,7 +106,7 @@ export function map<T extends Options>(
 export function merge(
   target: Target,
   query: Query,
-  value: any,
+  value: unknown,
   options?: Options,
 ): Target
 
@@ -131,7 +131,7 @@ export function merge(
 export function push(
   target: Target,
   query: Query,
-  values: readonly any[],
+  values: readonly unknown[],
   options?: Options,
 ): Target
 
@@ -155,7 +155,7 @@ export function push(
 export function unshift(
   target: Target,
   query: Query,
-  values: readonly any[],
+  values: readonly unknown[],
   options?: Options,
 ): Target
 
