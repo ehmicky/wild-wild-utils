@@ -1,5 +1,5 @@
 import type { Target, Entry } from 'wild-wild-path'
-import { expectType, expectNotType, expectError } from 'tsd'
+import { expectType, expectNotType } from 'tsd'
 
 import {
   map,
@@ -21,68 +21,100 @@ const testEntry = (entry: Entry): boolean => true
 expectType<Target>(map({}, 'prop', mapValue))
 map({}, ['prop'], mapEntry)
 map({}, 'prop', mapEntry, { entries: true })
-expectError(map(true, 'prop', mapEntry))
-expectError(map({}, true, mapEntry))
-expectError(map({}, 'prop', true))
-expectError(map({}, 'prop', mapEntry, true))
+// @ts-expect-error
+map(true, 'prop', mapEntry)
+// @ts-expect-error
+map({}, true, mapEntry)
+// @ts-expect-error
+map({}, 'prop', true)
+// @ts-expect-error
+map({}, 'prop', mapEntry, true)
 
 expectType<any>(find({}, 'prop', testValue))
 expectType<Entry>(find({}, 'prop', testEntry, { entries: true }))
 expectNotType<Entry>(find({}, 'prop', testEntry, { entries: false }))
 find({}, ['prop'], testValue)
-expectError(find(true, 'prop', testEntry))
-expectError(find({}, true, testEntry))
-expectError(find({}, 'prop', true))
-expectError(find({}, 'prop', testEntry, true))
+// @ts-expect-error
+find(true, 'prop', testEntry)
+// @ts-expect-error
+find({}, true, testEntry)
+// @ts-expect-error
+find({}, 'prop', true)
+// @ts-expect-error
+find({}, 'prop', testEntry, true)
 
 expectType<Target>(pick({}, 'prop'))
 pick({}, ['prop'])
 pick({}, 'prop', { entries: true })
-expectError(pick(true, 'prop'))
-expectError(pick({}, true))
-expectError(pick({}, 'prop', true))
+// @ts-expect-error
+pick(true, 'prop')
+// @ts-expect-error
+pick({}, true)
+// @ts-expect-error
+pick({}, 'prop', true)
 
 expectType<Target>(include({}, 'prop', testValue))
 include({}, ['prop'], testValue)
 include({}, 'prop', testEntry, { entries: true })
-expectError(include(true, 'prop', testEntry))
-expectError(include({}, true, testEntry))
-expectError(include({}, 'prop', true))
-expectError(include({}, 'prop', testEntry, true))
+// @ts-expect-error
+include(true, 'prop', testEntry)
+// @ts-expect-error
+include({}, true, testEntry)
+// @ts-expect-error
+include({}, 'prop', true)
+// @ts-expect-error
+include({}, 'prop', testEntry, true)
 
 expectType<Target>(exclude({}, 'prop', testValue))
 exclude({}, ['prop'], testValue)
 exclude({}, 'prop', testEntry, { entries: true })
-expectError(exclude(true, 'prop', testEntry))
-expectError(exclude({}, true, testEntry))
-expectError(exclude({}, 'prop', true))
-expectError(exclude({}, 'prop', testEntry, true))
+// @ts-expect-error
+exclude(true, 'prop', testEntry)
+// @ts-expect-error
+exclude({}, true, testEntry)
+// @ts-expect-error
+exclude({}, 'prop', true)
+// @ts-expect-error
+exclude({}, 'prop', testEntry, true)
 
 expectType<Target>(merge({}, 'prop', { one: 1 }))
 merge({}, ['prop'], { one: 1 })
 merge({}, 'prop', true)
-expectError(merge(true, 'prop', { one: 1 }))
-expectError(merge({}, true, { one: 1 }))
-expectError(merge({}, 'prop', { one: 1 }, true))
+// @ts-expect-error
+merge(true, 'prop', { one: 1 })
+// @ts-expect-error
+merge({}, true, { one: 1 })
+// @ts-expect-error
+merge({}, 'prop', { one: 1 }, true)
 
 expectType<Target>(push({}, 'prop', [1]))
 push({}, ['prop'], [1])
 push({}, 'prop', [1], { sort: true })
-expectError(push(true, 'prop', [1]))
-expectError(push({}, true, [1]))
-expectError(push({}, 'prop', true))
-expectError(push({}, 'prop', [1], true))
+// @ts-expect-error
+push(true, 'prop', [1])
+// @ts-expect-error
+push({}, true, [1])
+// @ts-expect-error
+push({}, 'prop', true)
+// @ts-expect-error
+push({}, 'prop', [1], true)
 
 expectType<Target>(unshift({}, 'prop', [1]))
 unshift({}, ['prop'], [1])
 unshift({}, 'prop', [1], { sort: true })
-expectError(unshift(true, 'prop', [1]))
-expectError(unshift({}, true, [1]))
-expectError(unshift({}, 'prop', true))
-expectError(unshift({}, 'prop', [1], true))
+// @ts-expect-error
+unshift(true, 'prop', [1])
+// @ts-expect-error
+unshift({}, true, [1])
+// @ts-expect-error
+unshift({}, 'prop', true)
+// @ts-expect-error
+unshift({}, 'prop', [1], true)
 
 expectType<object>(flatten({}))
 expectType<object>(flatten([]))
 flatten({}, { shallowArrays: true })
-expectError(flatten(true))
-expectError(flatten({}, true))
+// @ts-expect-error
+flatten(true)
+// @ts-expect-error
+flatten({}, true)
