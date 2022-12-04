@@ -2,11 +2,11 @@ import type { Target, Query, Entry, Options } from 'wild-wild-path'
 
 type Value = Entry['value']
 
-type MapValue = (value: Value) => Value
+type MapValue = (value: never) => Value
 
 type MapEntry = (entry: Entry) => Entry
 
-type TestValue = (value: Value) => boolean
+type TestValue = (value: never) => boolean
 
 type TestEntry = (entry: Entry) => boolean
 
