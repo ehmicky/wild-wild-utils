@@ -1,6 +1,6 @@
 // Retrieve class instances with both own and inherited properties
 /* eslint-disable fp/no-class, fp/no-this, fp/no-mutation */
-export const getChild = function (opts = {}) {
+export const getChild = (opts = {}) => {
   class Parent {}
   Parent.prototype.inherited = 'inherited'
 

@@ -5,13 +5,13 @@ import { validateFunction } from '../validate.js'
 import { reduceParents } from './reduce.js'
 
 // Remove values matching a query
-// eslint-disable-next-line max-params
-export const exclude = function (
+export const exclude = (
   target,
   query,
   condition,
   { mutate, entries, shallowArrays, classes, inherited } = {},
-) {
+  // eslint-disable-next-line max-params
+) => {
   validateFunction(condition)
   const setFunc = excludeEntry.bind(undefined, {
     mutate,
@@ -34,10 +34,8 @@ export const exclude = function (
   })
 }
 
-const excludeEntry = function (
+const excludeEntry = (
   { mutate, shallowArrays, classes, inherited },
   newTarget,
   { path },
-) {
-  return remove(newTarget, path, { mutate, shallowArrays, classes, inherited })
-}
+) => remove(newTarget, path, { mutate, shallowArrays, classes, inherited })

@@ -5,25 +5,16 @@ import { testValidation } from './helpers/validate.test.js'
 
 import { map } from 'wild-wild-utils'
 
-const addOne = function (value) {
-  return value + 1
-}
+const addOne = (value) => value + 1
 
-const removeEmpty = function (object) {
-  return Object.values(object).every(isEmptyObj) ? {} : object
-}
+const removeEmpty = (object) =>
+  Object.values(object).every(isEmptyObj) ? {} : object
 
-const isEmptyObj = function (object) {
-  return Object.keys(object).length === 0
-}
+const isEmptyObj = (object) => Object.keys(object).length === 0
 
-const addOneProp = function (object) {
-  return { ...object, one: 1 }
-}
+const addOneProp = (object) => ({ ...object, one: 1 })
 
-const addDefaultOne = function (value = 1) {
-  return value
-}
+const addDefaultOne = (value = 1) => value
 
 testMutate('map', map, [
   // Main usage

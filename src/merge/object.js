@@ -7,9 +7,7 @@ import { mergeValues } from './common.js'
 //  - But do not impact the merging logic itself, where those options are always
 //    considered `false`.
 // Non-enumerable properties are ignored.
-const mergeValue = function (value, newValue) {
-  return declarativeMerge(value, newValue)
-}
+const mergeValue = (value, newValue) => declarativeMerge(value, newValue)
 
 // Merge object values
 export const merge = mergeValues.bind(undefined, mergeValue)

@@ -3,13 +3,13 @@ import test from 'ava'
 import { each } from 'test-each'
 
 // Test multiple inputs with the `mutate` option either `true` or `false`
-export const testMutate = function (name, method, inputs) {
+export const testMutate = (name, method, inputs) => {
   each([false, true], inputs, ({ title }, mutate, { input, opts, output }) =>
     testMutateSingle({ title, name, method, mutate, input, opts, output }),
   )
 }
 
-const testMutateSingle = function ({
+const testMutateSingle = ({
   title,
   name,
   method,
@@ -18,7 +18,7 @@ const testMutateSingle = function ({
   input: [target],
   opts = {},
   output,
-}) {
+}) => {
   if (opts.mutate && !mutate) {
     return
   }

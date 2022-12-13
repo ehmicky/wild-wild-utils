@@ -4,13 +4,13 @@ import { pickEntry } from './pick.js'
 import { reduceParents } from './reduce.js'
 
 // Remove values not matching a query
-// eslint-disable-next-line max-params
-export const include = function (
+export const include = (
   target,
   query,
   condition,
   { sort, entries, shallowArrays, classes, inherited } = {},
-) {
+  // eslint-disable-next-line max-params
+) => {
   validateFunction(condition)
   const setFunc = pickEntry.bind(undefined, {
     shallowArrays,

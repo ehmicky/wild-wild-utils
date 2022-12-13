@@ -14,8 +14,7 @@ import { validateFunction } from './validate.js'
 //     - There are not many use cases for it
 //        - When needed, this can also be done by the consumer logic
 //     - This also avoids infinite recursion
-// eslint-disable-next-line max-params
-export const map = function (
+export const map = (
   target,
   query,
   mapFunc,
@@ -29,7 +28,8 @@ export const map = function (
     classes,
     inherited,
   } = {},
-) {
+  // eslint-disable-next-line max-params
+) => {
   validateFunction(mapFunc)
   const entries = list(target, query, {
     childFirst: true,
@@ -59,7 +59,7 @@ export const map = function (
   )
 }
 
-const mapEntry = function ({
+const mapEntry = ({
   mapFunc,
   target,
   entry,
@@ -70,7 +70,7 @@ const mapEntry = function ({
   shallowArrays,
   classes,
   inherited,
-}) {
+}) => {
   const value = get(target, path, { shallowArrays, classes, inherited })
   const entryA = entriesOpt ? { ...entry, value } : value
   const mappedValue = mapFunc(entryA)

@@ -1,8 +1,7 @@
 import { map } from '../map.js'
 
 // Wrapper around map()
-// eslint-disable-next-line max-params
-export const mergeValues = function (
+export const mergeValues = (
   mapFunc,
   target,
   query,
@@ -16,8 +15,9 @@ export const mergeValues = function (
     classes,
     inherited,
   } = {},
-) {
-  return map(target, query, (value) => mapFunc(value, newValue, { mutate }), {
+  // eslint-disable-next-line max-params
+) =>
+  map(target, query, (value) => mapFunc(value, newValue, { mutate }), {
     mutate,
     roots,
     leaves,
@@ -27,4 +27,3 @@ export const mergeValues = function (
     classes,
     inherited,
   })
-}

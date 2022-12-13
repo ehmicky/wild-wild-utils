@@ -2,10 +2,10 @@ import { serializePath } from 'wild-wild-parser'
 import { list } from 'wild-wild-path'
 
 // Flattens all deep properties into a shallow object where each key is a path
-export const flatten = function (
+export const flatten = (
   target,
   { sort, shallowArrays, classes, inherited } = {},
-) {
+) => {
   const entries = list(target, '**', {
     childFirst: false,
     roots: false,
@@ -20,6 +20,4 @@ export const flatten = function (
   return Object.fromEntries(entries.map(flattenEntry))
 }
 
-const flattenEntry = function ({ path, value }) {
-  return [serializePath(path), value]
-}
+const flattenEntry = ({ path, value }) => [serializePath(path), value]

@@ -3,11 +3,11 @@ import { set } from 'wild-wild-path'
 import { reduceParents } from './reduce.js'
 
 // Returns an object with only the properties being queried.
-export const pick = function (
+export const pick = (
   target,
   query,
   { sort, shallowArrays, classes, inherited } = {},
-) {
+) => {
   const setFunc = pickEntry.bind(undefined, {
     shallowArrays,
     classes,
@@ -26,15 +26,14 @@ export const pick = function (
   })
 }
 
-export const pickEntry = function (
+export const pickEntry = (
   { shallowArrays, classes, inherited },
   newTarget,
   { path, value },
-) {
-  return set(newTarget, path, value, {
+) =>
+  set(newTarget, path, value, {
     mutate: true,
     shallowArrays,
     classes,
     inherited,
   })
-}
