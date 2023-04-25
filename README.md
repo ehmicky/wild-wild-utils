@@ -31,16 +31,6 @@ Unlike similar libraries, object properties can be get/set using
 [unions](https://github.com/ehmicky/wild-wild-path#-unions). It is built on top
 of [`wild-wild-path`](https://github.com/ehmicky/wild-wild-path).
 
-# Hire me
-
-Please
-[reach out](https://www.linkedin.com/feed/update/urn:li:activity:7018596298127781890/)
-if you're looking for a Node.js API or CLI engineer (10 years of experience).
-Most recently I have been [Netlify Build](https://github.com/netlify/build)'s
-and [Netlify Plugins](https://www.netlify.com/products/build/plugins/)'
-technical lead for 2.5 years. I am available for full-time remote positions in
-either US or EU time zones.
-
 # Install
 
 ```bash
