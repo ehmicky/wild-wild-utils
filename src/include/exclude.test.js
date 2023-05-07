@@ -1,3 +1,5 @@
+import { exclude } from 'wild-wild-utils'
+
 import {
   returnFalse,
   returnTrue,
@@ -9,7 +11,6 @@ import { getChild } from '../helpers/inherited.test.js'
 import { testMutate } from '../helpers/mutate.test.js'
 import { testValidation } from '../helpers/validate.test.js'
 
-import { exclude } from 'wild-wild-utils'
 
 testMutate('exclude', exclude, [
   // Main usage

@@ -1,9 +1,10 @@
+import { merge } from 'wild-wild-utils'
+
 import { getChild } from '../helpers/inherited.test.js'
 import { testMutate } from '../helpers/mutate.test.js'
 import { testOutput } from '../helpers/output.test.js'
 import { testValidation } from '../helpers/validate.test.js'
 
-import { merge } from 'wild-wild-utils'
 
 testMutate('merge', merge, [
   // Setting values

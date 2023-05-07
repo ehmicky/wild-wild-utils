@@ -1,6 +1,5 @@
 import { expectType, expectNotType } from 'tsd'
 import type { Target, Entry } from 'wild-wild-path'
-
 import {
   map,
   find,
