@@ -51,7 +51,7 @@
     "lib": "src"
   },
   "dependencies": {
-    "declarative-merge": "^2.5.0",
+    "declarative-merge": "^3.0.0",
     "wild-wild-parser": "^3.4.0",
     "wild-wild-path": "^3.6.0"
   },
