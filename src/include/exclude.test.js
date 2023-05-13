@@ -11,7 +11,6 @@ import { getChild } from '../helpers/inherited.test.js'
 import { testMutate } from '../helpers/mutate.test.js'
 import { testValidation } from '../helpers/validate.test.js'
 
-
 testMutate('exclude', exclude, [
   // Main usage
   {

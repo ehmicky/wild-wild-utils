@@ -5,7 +5,6 @@ import { testMutate } from '../helpers/mutate.test.js'
 import { testOutput } from '../helpers/output.test.js'
 import { testValidation } from '../helpers/validate.test.js'
 
-
 testMutate('merge', merge, [
   // Setting values
   { input: [{ one: { two: 2 } }, 'one', 3], output: { one: 3 } },

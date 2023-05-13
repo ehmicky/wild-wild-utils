@@ -5,7 +5,6 @@ import { getChild } from './helpers/inherited.test.js'
 import { testMutate } from './helpers/mutate.test.js'
 import { testValidation } from './helpers/validate.test.js'
 
-
 const addOne = (value) => value + 1
 
 const removeEmpty = (object) =>

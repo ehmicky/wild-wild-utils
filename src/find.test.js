@@ -5,7 +5,6 @@ import { getChild } from './helpers/inherited.test.js'
 import { testOutput } from './helpers/output.test.js'
 import { testValidation } from './helpers/validate.test.js'
 
-
 const child = getChild()
 
 testOutput('find', find, [

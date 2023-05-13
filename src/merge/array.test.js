@@ -5,7 +5,6 @@ import { testMutate } from '../helpers/mutate.test.js'
 import { testOutput } from '../helpers/output.test.js'
 import { testValidation } from '../helpers/validate.test.js'
 
-
 testMutate('unshift', unshift, [
   { input: [{ one: [1] }, 'one', [2]], output: { one: [2, 1] } },
   { input: [{ one: [1] }, 'one', [2, 3]], output: { one: [2, 3, 1] } },
