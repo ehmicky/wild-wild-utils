@@ -42,7 +42,10 @@
   ],
   "license": "Apache-2.0",
   "homepage": "https://www.github.com/ehmicky/wild-wild-utils",
-  "repository": "ehmicky/wild-wild-utils",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehmicky/wild-wild-utils.git"
+  },
   "bugs": {
     "url": "https://github.com/ehmicky/wild-wild-utils/issues"
   },
