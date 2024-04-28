@@ -59,7 +59,7 @@
     "wild-wild-path": "^5.0.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^2.0.105",
+    "@ehmicky/dev-tasks": "^2.0.106",
     "test-each": "^6.0.1"
   },
   "engines": {
