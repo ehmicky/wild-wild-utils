@@ -577,9 +577,9 @@ are.
 - [`wild-wild-parser`](https://github.com/ehmicky/wild-wild-parser): parser for
   `wild-wild-path`'s object property paths
 - [`declarative-merge`](https://github.com/ehmicky/declarative-merge): object
-  merging logic used by the [`merge()` method](#mergetarget-query-value-option)
+  merging logic used by the [`merge()` method](#mergetarget-query-value-options)
 - [`set-array`](https://github.com/ehmicky/set-array): array update logic used
-  by the [`merge()` method](#mergetarget-query-value-option)
+  by the [`merge()` method](#mergetarget-query-value-options)
 
 # Support
 

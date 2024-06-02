@@ -71,7 +71,9 @@
 
 ## Breaking changes
 
-- The [`merge()`](#mergetarget-query-value-options) method has been improved:
+- The
+  [`merge()`](https://github.com/ehmicky/declarative-merge#mergetarget-query-value-options)
+  method has been improved:
   - Merging is now deep by default
   - Merging mode can be changed to
     [`"shallow"`](https://github.com/ehmicky/declarative-merge#shallow-merge),
