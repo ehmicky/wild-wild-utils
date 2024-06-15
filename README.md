@@ -331,7 +331,8 @@ _Default_: `false`
 
 By default, the [target](https://github.com/ehmicky/wild-wild-path#target) is
 deeply cloned.\
-When `true`, it is directly mutated instead, which is faster but has side effects.
+When `true`, it is directly mutated instead, which is faster but has side
+effects.
 
 ```js
 const target = { colors: ['red'] }
