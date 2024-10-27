@@ -59,7 +59,7 @@
     "wild-wild-path": "^5.0.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^3.0.19",
+    "@ehmicky/dev-tasks": "^3.0.20",
     "@ehmicky/eslint-config": "^20.0.4",
     "@ehmicky/prettier-config": "^1.0.0",
     "test-each": "^7.0.0"
