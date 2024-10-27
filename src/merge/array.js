@@ -22,7 +22,6 @@ const pushValue = (value, newValueArray, { mutate }) => {
 const pushValueMutate = (value, newValueArray) => {
   // eslint-disable-next-line fp/no-loops
   for (const newValue of newValueArray) {
-    // eslint-disable-next-line fp/no-mutating-methods
     value.push(newValue)
   }
 
@@ -46,7 +45,6 @@ const unshiftValue = (value, newValueArray, { mutate }) => {
 const unshiftValueMutate = (value, newValueArray) => {
   // eslint-disable-next-line fp/no-loops, fp/no-let, fp/no-mutation
   for (let index = newValueArray.length - 1; index >= 0; index -= 1) {
-    // eslint-disable-next-line fp/no-mutating-methods
     value.unshift(newValueArray[index])
   }
 
