@@ -1,4 +1,4 @@
-import type { Target, Query, Entry, Options } from 'wild-wild-path'
+import type { Entry, Options, Query, Target } from 'wild-wild-path'
 
 type Value = Entry['value']
 

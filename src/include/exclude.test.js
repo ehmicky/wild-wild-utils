@@ -1,9 +1,9 @@
 import {
+  isNamedTwo,
+  isNotOne,
+  isOne,
   returnFalse,
   returnTrue,
-  isOne,
-  isNotOne,
-  isNamedTwo,
 } from '../helpers/functions.test.js'
 import { getChild } from '../helpers/inherited.test.js'
 import { testMutate } from '../helpers/mutate.test.js'

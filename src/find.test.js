@@ -1,4 +1,4 @@
-import { returnTrue, isOne } from './helpers/functions.test.js'
+import { isOne, returnTrue } from './helpers/functions.test.js'
 import { getChild } from './helpers/inherited.test.js'
 import { testOutput } from './helpers/output.test.js'
 import { testValidation } from './helpers/validate.test.js'

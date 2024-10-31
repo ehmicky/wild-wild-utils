@@ -1,16 +1,16 @@
-import { expectType, expectNotType } from 'tsd'
-import type { Target, Entry } from 'wild-wild-path'
+import { expectNotType, expectType } from 'tsd'
+import type { Entry, Target } from 'wild-wild-path'
 
 import {
-  map,
-  find,
-  pick,
-  include,
   exclude,
+  find,
+  flatten,
+  include,
+  map,
   merge,
+  pick,
   push,
   unshift,
-  flatten,
 } from 'wild-wild-utils'
 
 const mapValue = (value: unknown): unknown => value

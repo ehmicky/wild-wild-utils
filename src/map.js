@@ -1,6 +1,6 @@
 // We split the core methods of `wild-wild-path` to keep it small, and provide
 // additional utilities built on top of it.
-import { list, get, set } from 'wild-wild-path'
+import { get, list, set } from 'wild-wild-path'
 
 import { validateFunction } from './validate.js'
 
