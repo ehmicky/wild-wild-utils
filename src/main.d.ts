@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/max-params */
 import type { Entry, Options, Query, Target } from 'wild-wild-path'
 
 type Value = Entry['value']
@@ -257,3 +258,4 @@ export function exclude<T extends Options>(
  * ```
  */
 export function flatten(target: Target, options?: Options): object
+/* eslint-enable @typescript-eslint/max-params */
