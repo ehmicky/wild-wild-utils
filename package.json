@@ -56,7 +56,7 @@
   "dependencies": {
     "declarative-merge": "^4.0.0",
     "wild-wild-parser": "^5.0.1",
-    "wild-wild-path": "^5.0.0"
+    "wild-wild-path": "^5.0.1"
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^3.0.33",
